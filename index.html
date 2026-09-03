@@ -8,18 +8,16 @@
     content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
   >
 
-  <meta name="theme-color" content="#050505">
+  <meta name="theme-color" content="#09090b">
   <meta name="color-scheme" content="dark">
 
   <meta
     name="description"
-    content="IRONCORE - App pessoal para treinos, cargas, progressão e evolução física."
+    content="IRONCORE - App pessoal de treinos, progressão e evolução física."
   >
 
-  <!-- PWA -->
   <link rel="manifest" href="manifest.json">
 
-  <!-- iPhone / iOS -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta
     name="apple-mobile-web-app-status-bar-style"
@@ -27,21 +25,17 @@
   >
   <meta name="apple-mobile-web-app-title" content="IRONCORE">
 
-  <!-- Ícone será adicionado posteriormente -->
-  <link
-    rel="apple-touch-icon"
-    href="assets/icon-192.png"
-  >
+  <link rel="apple-touch-icon" href="assets/icon-192.png">
 
   <title>IRONCORE</title>
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 
 <body>
 
   <!-- =========================================================
-       SVG ICONS
+       ÍCONES
   ========================================================== -->
 
   <svg
@@ -79,7 +73,6 @@
         stroke-linecap="round"
         stroke-linejoin="round"
       />
-
       <path
         d="M3 4v4h4M12 7v5l3 2"
         fill="none"
@@ -108,13 +101,19 @@
         stroke="currentColor"
         stroke-width="1.8"
       />
-
       <path
-        d="M4 21c.7-4.3 3.3-6.5 8-6.5s7.3 2.2 8 6.5"
+        d="M4 21c.8-4.4 3.5-6.5 8-6.5s7.2 2.1 8 6.5"
         fill="none"
         stroke="currentColor"
         stroke-width="1.8"
         stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-play" viewBox="0 0 24 24">
+      <path
+        d="m9 7 8 5-8 5z"
+        fill="currentColor"
       />
     </symbol>
 
@@ -128,12 +127,12 @@
       />
     </symbol>
 
-    <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+    <symbol id="icon-check" viewBox="0 0 24 24">
       <path
-        d="m9 6 6 6-6 6"
+        d="m5 12 4 4 10-10"
         fill="none"
         stroke="currentColor"
-        stroke-width="2"
+        stroke-width="2.2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
@@ -150,37 +149,50 @@
       />
     </symbol>
 
-    <symbol id="icon-check" viewBox="0 0 24 24">
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24">
       <path
-        d="m5 12 4 4L19 6"
+        d="m9 6 6 6-6 6"
         fill="none"
         stroke="currentColor"
-        stroke-width="2.2"
+        stroke-width="2"
         stroke-linecap="round"
         stroke-linejoin="round"
       />
     </symbol>
 
-    <symbol id="icon-fire" viewBox="0 0 24 24">
+    <symbol id="icon-flame" viewBox="0 0 24 24">
       <path
-        d="M12 22c4 0 7-2.8 7-6.6 0-3.4-2.2-5.7-4.5-8.2-.1 2-1.1 3.3-2.2 4.3.1-3.1-1.7-6.5-5.1-9.5.2 4-2.2 6.6-2.2 10.4C5 18.1 8 22 12 22Z"
+        d="M13 3s1 3-1 5c-2 2-4 3-4 7a4 4 0 0 0 8 0c0-2-1-4-3-6 0 0 0 3-2 4"
         fill="none"
         stroke="currentColor"
-        stroke-width="1.7"
+        stroke-width="1.8"
+        stroke-linecap="round"
         stroke-linejoin="round"
       />
     </symbol>
 
     <symbol id="icon-trophy" viewBox="0 0 24 24">
       <path
-        d="M8 4h8v4c0 4-1.6 6-4 6s-4-2-4-6V4Z"
+        d="M8 4h8v4c0 4-2 6-4 6s-4-2-4-6zM8 6H5v2c0 2 1 3 3 4M16 6h3v2c0 2-1 3-3 4M12 14v4M8 21h8"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-clock" viewBox="0 0 24 24">
+      <circle
+        cx="12"
+        cy="12"
+        r="9"
         fill="none"
         stroke="currentColor"
         stroke-width="1.8"
       />
-
       <path
-        d="M8 6H5c0 4 1 6 4 6M16 6h3c0 4-1 6-4 6M12 14v4M8 21h8M10 18h4"
+        d="M12 7v5l3 2"
         fill="none"
         stroke="currentColor"
         stroke-width="1.8"
@@ -188,26 +200,28 @@
       />
     </symbol>
 
-    <symbol id="icon-edit" viewBox="0 0 24 24">
-      <path
-        d="M4 20h4L19 9l-4-4L4 16v4Z"
+    <symbol id="icon-body" viewBox="0 0 24 24">
+      <circle
+        cx="12"
+        cy="5"
+        r="2"
         fill="none"
         stroke="currentColor"
-        stroke-width="1.8"
-        stroke-linejoin="round"
+        stroke-width="1.7"
       />
-
       <path
-        d="m13.5 6.5 4 4"
+        d="M8.5 9c1.5-1 5.5-1 7 0l1.5 4-2 1v6M9 20v-6l-2-1zM9.5 12h5"
         fill="none"
         stroke="currentColor"
-        stroke-width="1.8"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
       />
     </symbol>
 
-    <symbol id="icon-trash" viewBox="0 0 24 24">
+    <symbol id="icon-edit" viewBox="0 0 24 24">
       <path
-        d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13"
+        d="M5 19h4L19 9l-4-4L5 15zM13 7l4 4"
         fill="none"
         stroke="currentColor"
         stroke-width="1.8"
@@ -219,159 +233,204 @@
   </svg>
 
 
-
   <!-- =========================================================
        APP
   ========================================================== -->
 
-  <div id="app" class="app">
-
-    <!-- =======================================================
-         HEADER
-    ======================================================== -->
+  <div class="app">
 
     <header class="topbar">
 
       <button
         class="icon-button"
-        id="menuButton"
         type="button"
         aria-label="Menu"
       >
-        <span class="menu-lines">
+        <div class="menu-lines">
           <span></span>
           <span></span>
           <span></span>
-        </span>
+        </div>
       </button>
 
-
       <div class="brand">
-        <span class="brand-white">IRON</span>
-        <span class="brand-red">CORE</span>
+        <span class="brand-white">IRON</span><span class="brand-red">CORE</span>
       </div>
-
 
       <button
         class="notification-button"
         type="button"
         aria-label="Notificações"
       >
-        <span class="notification-dot"></span>
         🔔
+        <span class="notification-dot"></span>
       </button>
 
     </header>
 
 
-
-    <!-- =======================================================
-         CONTEÚDO PRINCIPAL
-    ======================================================== -->
-
     <main class="main-content">
 
-
-
       <!-- =====================================================
-           TELA: HOJE
+           HOJE
       ====================================================== -->
 
       <section
         class="screen active"
-        id="screen-home"
         data-screen="home"
       >
 
         <div class="welcome-block">
-
-          <p class="eyebrow">
-            BOM DIA,
-          </p>
-
-          <h1 id="userGreeting">
-            GUILHERME
-          </h1>
-
+          <span class="eyebrow">BOM DIA,</span>
+          <h1>GUILHERME</h1>
         </div>
 
 
-        <section class="today-workout-card">
+        <section class="hero-workout-card">
 
-          <div class="section-label">
-            TREINO DE HOJE
-          </div>
+          <div class="hero-workout-content">
 
-          <div class="today-workout-header">
+            <div class="hero-workout-copy">
 
-            <div>
+              <span class="eyebrow">
+                TREINO DE HOJE
+              </span>
 
-              <h2 id="todayWorkoutName">
+              <h2>
                 PEITO + TRÍCEPS
               </h2>
 
-              <p id="todayWorkoutDetails">
+              <p>
                 7 exercícios • 24 séries
               </p>
 
             </div>
 
+            <div class="hero-muscle-visual">
 
-            <div class="workout-badge">
-              A
+              <div class="body-placeholder">
+                <svg>
+                  <use href="#icon-body"></use>
+                </svg>
+
+                <span>
+                  PEITO
+                </span>
+              </div>
+
             </div>
 
           </div>
 
 
           <button
-            class="primary-button"
+            class="primary-button hero-start-button"
             id="startWorkoutButton"
             type="button"
           >
+
             INICIAR TREINO
-            <span>▶</span>
+
+            <svg>
+              <use href="#icon-play"></use>
+            </svg>
+
           </button>
 
 
-          <div class="stats-grid">
+          <div class="hero-stats">
 
-            <article class="stat-card">
-
-              <span class="stat-label">
-                Último treino
+            <div>
+              <span>
+                ÚLTIMO TREINO
               </span>
 
-              <strong id="lastWorkoutDate">
+              <strong>
                 --
               </strong>
+            </div>
 
-            </article>
-
-
-            <article class="stat-card">
-
-              <span class="stat-label">
-                Volume
+            <div>
+              <span>
+                VOLUME
               </span>
 
-              <strong id="lastWorkoutVolume">
+              <strong>
                 0 kg
               </strong>
+            </div>
+
+            <div>
+              <span>
+                PRs
+              </span>
+
+              <strong class="accent-text">
+                0
+              </strong>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <section class="dashboard-section">
+
+          <div class="section-heading">
+            <h3>
+              RECUPERAÇÃO
+            </h3>
+
+            <button
+              class="section-action"
+              type="button"
+            >
+              VER TUDO
+            </button>
+          </div>
+
+
+          <div class="recovery-grid">
+
+            <article class="recovery-card">
+
+              <div class="recovery-ring">
+                <span>
+                  92%
+                </span>
+              </div>
+
+              <div>
+                <strong>
+                  Peito
+                </strong>
+
+                <span>
+                  Recuperado
+                </span>
+              </div>
 
             </article>
 
 
-            <article class="stat-card">
+            <article class="recovery-card">
 
-              <span class="stat-label">
-                PRs recentes
-              </span>
+              <div class="recovery-ring medium">
+                <span>
+                  68%
+                </span>
+              </div>
 
-              <strong class="highlight-stat">
-                <span id="recentPRs">0</span>
-                🔥
-              </strong>
+              <div>
+                <strong>
+                  Tríceps
+                </strong>
+
+                <span>
+                  Quase pronto
+                </span>
+              </div>
 
             </article>
 
@@ -380,8 +439,97 @@
         </section>
 
 
+        <section class="dashboard-section">
 
-        <!-- DESTAQUES -->
+          <div class="section-heading">
+
+            <h3>
+              SUA SEMANA
+            </h3>
+
+          </div>
+
+
+          <div class="week-summary-card">
+
+            <div class="week-summary-top">
+
+              <div>
+                <span>
+                  TREINOS
+                </span>
+
+                <strong>
+                  3 / 5
+                </strong>
+              </div>
+
+              <div>
+                <span>
+                  VOLUME
+                </span>
+
+                <strong>
+                  0 kg
+                </strong>
+              </div>
+
+              <div>
+                <span>
+                  SEQUÊNCIA
+                </span>
+
+                <strong>
+                  0 dias
+                </strong>
+              </div>
+
+            </div>
+
+
+            <div class="week-days">
+
+              <div class="week-day done">
+                <span>S</span>
+                <i></i>
+              </div>
+
+              <div class="week-day done">
+                <span>T</span>
+                <i></i>
+              </div>
+
+              <div class="week-day today">
+                <span>Q</span>
+                <i></i>
+              </div>
+
+              <div class="week-day">
+                <span>Q</span>
+                <i></i>
+              </div>
+
+              <div class="week-day">
+                <span>S</span>
+                <i></i>
+              </div>
+
+              <div class="week-day">
+                <span>S</span>
+                <i></i>
+              </div>
+
+              <div class="week-day">
+                <span>D</span>
+                <i></i>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
 
         <section class="dashboard-section">
 
@@ -395,7 +543,6 @@
 
 
           <div class="highlight-grid">
-
 
             <article class="highlight-card">
 
@@ -411,14 +558,13 @@
                   Melhor carga
                 </span>
 
-                <strong id="bestLoadHighlight">
+                <strong>
                   --
                 </strong>
 
               </div>
 
             </article>
-
 
 
             <article class="highlight-card">
@@ -435,7 +581,7 @@
                   Recordes
                 </span>
 
-                <strong id="totalPRHighlight">
+                <strong>
                   0 PRs
                 </strong>
 
@@ -443,117 +589,20 @@
 
             </article>
 
-
-
-            <article class="highlight-card">
-
-              <div class="highlight-icon">
-                <svg>
-                  <use href="#icon-fire"></use>
-                </svg>
-              </div>
-
-              <div>
-
-                <span>
-                  Sequência
-                </span>
-
-                <strong id="streakHighlight">
-                  0 dias
-                </strong>
-
-              </div>
-
-            </article>
-
-
-
-            <article class="highlight-card">
-
-              <div class="highlight-icon">
-                <svg>
-                  <use href="#icon-chart"></use>
-                </svg>
-              </div>
-
-              <div>
-
-                <span>
-                  Treinos
-                </span>
-
-                <strong id="totalWorkoutsHighlight">
-                  0
-                </strong>
-
-              </div>
-
-            </article>
-
-
           </div>
 
         </section>
-
-
-
-        <!-- PRÓXIMO TREINO -->
-
-        <section class="dashboard-section">
-
-          <div class="section-heading">
-
-            <h3>
-              PRÓXIMO TREINO
-            </h3>
-
-          </div>
-
-
-          <button
-            class="next-workout-card"
-            id="nextWorkoutCard"
-            type="button"
-          >
-
-            <div>
-
-              <span class="small-label">
-                PRÓXIMA SESSÃO
-              </span>
-
-              <strong id="nextWorkoutName">
-                COSTAS + BÍCEPS
-              </strong>
-
-              <small id="nextWorkoutInfo">
-                Treino B
-              </small>
-
-            </div>
-
-
-            <svg>
-              <use href="#icon-chevron-right"></use>
-            </svg>
-
-          </button>
-
-        </section>
-
 
       </section>
 
 
 
       <!-- =====================================================
-           TELA: TREINOS
+           TREINOS
       ====================================================== -->
 
       <section
         class="screen"
-        id="screen-workouts"
         data-screen="workouts"
       >
 
@@ -562,11 +611,11 @@
           <div>
 
             <span class="eyebrow">
-              SUA ROTINA
+              BIBLIOTECA
             </span>
 
             <h1>
-              TREINOS
+              Treinos
             </h1>
 
           </div>
@@ -588,12 +637,10 @@
         </div>
 
 
-
         <div
           class="workout-list"
           id="workoutList"
         >
-
 
           <article
             class="workout-card"
@@ -610,7 +657,6 @@
                 A
               </div>
 
-
               <div class="workout-info">
 
                 <strong>
@@ -623,13 +669,11 @@
 
               </div>
 
-
               <svg class="chevron">
                 <use href="#icon-chevron-right"></use>
               </svg>
 
             </button>
-
 
             <button
               class="workout-edit"
@@ -645,7 +689,6 @@
             </button>
 
           </article>
-
 
 
           <article
@@ -681,7 +724,6 @@
 
             </button>
 
-
             <button
               class="workout-edit"
               type="button"
@@ -696,7 +738,6 @@
             </button>
 
           </article>
-
 
 
           <article
@@ -732,7 +773,6 @@
 
             </button>
 
-
             <button
               class="workout-edit"
               type="button"
@@ -747,7 +787,6 @@
             </button>
 
           </article>
-
 
 
           <article
@@ -783,7 +822,6 @@
 
             </button>
 
-
             <button
               class="workout-edit"
               type="button"
@@ -798,7 +836,6 @@
             </button>
 
           </article>
-
 
 
           <article
@@ -823,7 +860,7 @@
                 </strong>
 
                 <span>
-                  Exercícios variáveis
+                  Corpo inteiro
                 </span>
 
               </div>
@@ -833,7 +870,6 @@
               </svg>
 
             </button>
-
 
             <button
               class="workout-edit"
@@ -850,21 +886,18 @@
 
           </article>
 
-
         </div>
-
 
       </section>
 
 
 
       <!-- =====================================================
-           TELA: HISTÓRICO
+           HISTÓRICO
       ====================================================== -->
 
       <section
         class="screen"
-        id="screen-history"
         data-screen="history"
       >
 
@@ -873,11 +906,11 @@
           <div>
 
             <span class="eyebrow">
-              SUA EVOLUÇÃO
+              ATIVIDADE
             </span>
 
             <h1>
-              HISTÓRICO
+              Histórico
             </h1>
 
           </div>
@@ -885,13 +918,11 @@
         </div>
 
 
-
         <div class="tab-switcher">
 
           <button
             class="tab-button active"
             type="button"
-            data-history-tab="workouts"
           >
             TREINOS
           </button>
@@ -899,19 +930,14 @@
           <button
             class="tab-button"
             type="button"
-            data-history-tab="exercises"
           >
-            EXERCÍCIOS
+            CALENDÁRIO
           </button>
 
         </div>
 
 
-
-        <div
-          class="history-content"
-          id="historyContent"
-        >
+        <div class="history-content">
 
           <div class="empty-state">
 
@@ -922,29 +948,27 @@
             </div>
 
             <h3>
-              Nenhum treino registrado
+              Nenhum treino salvo
             </h3>
 
             <p>
-              Seus treinos concluídos aparecerão aqui.
+              Seus treinos finalizados aparecerão aqui.
             </p>
 
           </div>
 
         </div>
 
-
       </section>
 
 
 
       <!-- =====================================================
-           TELA: PROGRESSO
+           PROGRESSO
       ====================================================== -->
 
       <section
         class="screen"
-        id="screen-progress"
         data-screen="progress"
       >
 
@@ -953,11 +977,11 @@
           <div>
 
             <span class="eyebrow">
-              PERFORMANCE
+              EVOLUÇÃO
             </span>
 
             <h1>
-              PROGRESSO
+              Progresso
             </h1>
 
           </div>
@@ -965,67 +989,34 @@
         </div>
 
 
-
         <div class="progress-summary-grid">
-
 
           <article class="progress-summary-card">
 
             <span>
-              Volume total
+              VOLUME TOTAL
             </span>
 
-            <strong id="totalVolumeProgress">
+            <strong>
               0 kg
             </strong>
 
           </article>
 
 
-
           <article class="progress-summary-card">
 
             <span>
-              Treinos
+              RECORDES
             </span>
 
-            <strong id="totalWorkoutsProgress">
+            <strong>
               0
             </strong>
 
           </article>
-
-
-
-          <article class="progress-summary-card">
-
-            <span>
-              PRs
-            </span>
-
-            <strong id="totalPrProgress">
-              0
-            </strong>
-
-          </article>
-
-
-
-          <article class="progress-summary-card">
-
-            <span>
-              Frequência
-            </span>
-
-            <strong id="frequencyProgress">
-              0%
-            </strong>
-
-          </article>
-
 
         </div>
-
 
 
         <section class="progress-panel">
@@ -1033,11 +1024,10 @@
           <div class="section-heading">
 
             <h3>
-              EVOLUÇÃO DE FORÇA
+              VOLUME
             </h3>
 
           </div>
-
 
           <div class="chart-placeholder">
 
@@ -1046,7 +1036,7 @@
             </svg>
 
             <span>
-              O gráfico aparecerá após seus primeiros registros.
+              O gráfico aparecerá depois dos seus primeiros treinos.
             </span>
 
           </div>
@@ -1054,22 +1044,18 @@
         </section>
 
 
-
         <section class="progress-panel">
 
           <div class="section-heading">
 
             <h3>
-              GRUPOS MUSCULARES
+              FREQUÊNCIA MUSCULAR
             </h3>
 
           </div>
 
 
-          <div
-            class="muscle-frequency-list"
-            id="muscleFrequencyList"
-          >
+          <div class="muscle-frequency-list">
 
             <div class="muscle-frequency-item">
 
@@ -1082,7 +1068,7 @@
               </div>
 
               <strong>
-                0%
+                0x
               </strong>
 
             </div>
@@ -1099,7 +1085,7 @@
               </div>
 
               <strong>
-                0%
+                0x
               </strong>
 
             </div>
@@ -1116,58 +1102,7 @@
               </div>
 
               <strong>
-                0%
-              </strong>
-
-            </div>
-
-
-            <div class="muscle-frequency-item">
-
-              <span>
-                Ombros
-              </span>
-
-              <div class="frequency-bar">
-                <span style="width:0%"></span>
-              </div>
-
-              <strong>
-                0%
-              </strong>
-
-            </div>
-
-
-            <div class="muscle-frequency-item">
-
-              <span>
-                Bíceps
-              </span>
-
-              <div class="frequency-bar">
-                <span style="width:0%"></span>
-              </div>
-
-              <strong>
-                0%
-              </strong>
-
-            </div>
-
-
-            <div class="muscle-frequency-item">
-
-              <span>
-                Tríceps
-              </span>
-
-              <div class="frequency-bar">
-                <span style="width:0%"></span>
-              </div>
-
-              <strong>
-                0%
+                0x
               </strong>
 
             </div>
@@ -1176,114 +1111,92 @@
 
         </section>
 
-
       </section>
 
 
 
       <!-- =====================================================
-           TELA: PERFIL
+           PERFIL
       ====================================================== -->
 
       <section
         class="screen"
-        id="screen-profile"
         data-screen="profile"
       >
 
         <div class="profile-header">
 
-
           <div class="profile-avatar">
-
             <span>
               G
             </span>
-
           </div>
 
-
           <h1>
-            GUILHERME
+            Guilherme
           </h1>
-
 
           <p>
             IRONCORE ATHLETE
           </p>
 
-
         </div>
-
 
 
         <div class="profile-stats">
 
-
           <div>
-
             <span>
-              Treinos
+              TREINOS
             </span>
 
-            <strong id="profileWorkoutCount">
+            <strong>
               0
             </strong>
-
           </div>
 
-
           <div>
-
             <span>
               PRs
             </span>
 
-            <strong id="profilePrCount">
+            <strong>
               0
             </strong>
-
           </div>
-
 
           <div>
-
             <span>
-              Sequência
+              SEQUÊNCIA
             </span>
 
-            <strong id="profileStreak">
+            <strong>
               0
             </strong>
-
           </div>
-
 
         </div>
 
 
-
         <div class="settings-list">
 
-
           <button
             class="settings-item"
             type="button"
-            id="bodyDataButton"
           >
 
             <span>
-              ⚖️
+              👤
             </span>
 
             <div>
 
               <strong>
-                Peso e medidas
+                Dados pessoais
               </strong>
 
               <small>
-                Acompanhe sua evolução corporal
+                Perfil e medidas
               </small>
 
             </div>
@@ -1295,25 +1208,23 @@
           </button>
 
 
-
           <button
             class="settings-item"
             type="button"
-            id="photosButton"
           >
 
             <span>
-              📷
+              📈
             </span>
 
             <div>
 
               <strong>
-                Fotos de evolução
+                Evolução física
               </strong>
 
               <small>
-                Compare sua evolução física
+                Peso, medidas e fotos
               </small>
 
             </div>
@@ -1323,67 +1234,6 @@
             </svg>
 
           </button>
-
-
-
-          <button
-            class="settings-item"
-            type="button"
-            id="calendarButton"
-          >
-
-            <span>
-              📅
-            </span>
-
-            <div>
-
-              <strong>
-                Calendário
-              </strong>
-
-              <small>
-                Veja seus dias treinados
-              </small>
-
-            </div>
-
-            <svg>
-              <use href="#icon-chevron-right"></use>
-            </svg>
-
-          </button>
-
-
-
-          <button
-            class="settings-item"
-            type="button"
-            id="backupButton"
-          >
-
-            <span>
-              ☁️
-            </span>
-
-            <div>
-
-              <strong>
-                Backup
-              </strong>
-
-              <small>
-                Proteja seus dados
-              </small>
-
-            </div>
-
-            <svg>
-              <use href="#icon-chevron-right"></use>
-            </svg>
-
-          </button>
-
 
 
           <button
@@ -1414,7 +1264,6 @@
 
           </button>
 
-
         </div>
 
 
@@ -1422,9 +1271,7 @@
           IRONCORE • VERSÃO 1.0
         </div>
 
-
       </section>
-
 
     </main>
 
@@ -1438,7 +1285,6 @@
       class="bottom-nav"
       aria-label="Navegação principal"
     >
-
 
       <button
         class="nav-item active"
@@ -1455,7 +1301,6 @@
         </span>
 
       </button>
-
 
 
       <button
@@ -1475,7 +1320,6 @@
       </button>
 
 
-
       <button
         class="nav-item"
         type="button"
@@ -1491,7 +1335,6 @@
         </span>
 
       </button>
-
 
 
       <button
@@ -1511,7 +1354,6 @@
       </button>
 
 
-
       <button
         class="nav-item"
         type="button"
@@ -1528,7 +1370,6 @@
 
       </button>
 
-
     </nav>
 
   </div>
@@ -1544,20 +1385,17 @@
     id="workoutSession"
   >
 
-
     <header class="session-header">
-
 
       <button
         class="icon-button"
         id="closeWorkoutSession"
         type="button"
+        aria-label="Voltar"
       >
-
         <svg>
           <use href="#icon-back"></use>
         </svg>
-
       </button>
 
 
@@ -1581,22 +1419,34 @@
         00:00
       </div>
 
-
     </header>
-
 
 
     <main class="session-content">
 
+      <section class="exercise-visual-card">
 
-      <section class="exercise-session-card">
+        <div class="exercise-visual-main">
+
+          <div class="exercise-visual-placeholder">
+
+            <svg>
+              <use href="#icon-body"></use>
+            </svg>
+
+            <span>
+              PEITO
+            </span>
+
+          </div>
 
 
-        <div class="exercise-session-header">
+          <div class="exercise-visual-copy">
 
-          <div>
-
-            <span class="exercise-index">
+            <span
+              class="exercise-index"
+              id="exerciseIndex"
+            >
               EXERCÍCIO 1 DE 7
             </span>
 
@@ -1604,53 +1454,99 @@
               Supino Reto
             </h2>
 
-          </div>
-
-
-          <button
-            class="exercise-menu-button"
-            type="button"
-          >
-            •••
-          </button>
-
-        </div>
-
-
-
-        <div class="last-performance">
-
-          <div>
-
-            <span>
-              ÚLTIMO TREINO
-            </span>
-
-            <strong id="exerciseLastPerformance">
-              --
-            </strong>
-
-          </div>
-
-
-          <div>
-
-            <span>
-              META
-            </span>
-
-            <strong id="exerciseTarget">
-              --
-            </strong>
+            <p>
+              Peitoral • Tríceps • Ombro anterior
+            </p>
 
           </div>
 
         </div>
 
+
+        <button
+          class="exercise-menu-button"
+          type="button"
+          aria-label="Opções do exercício"
+        >
+          •••
+        </button>
+
+      </section>
+
+
+      <section class="exercise-info-grid">
+
+        <div>
+
+          <span>
+            ÚLTIMO TREINO
+          </span>
+
+          <strong id="exerciseLastPerformance">
+            --
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            MELHOR CARGA
+          </span>
+
+          <strong>
+            --
+          </strong>
+
+        </div>
+
+
+        <div>
+
+          <span>
+            META
+          </span>
+
+          <strong id="exerciseTarget">
+            --
+          </strong>
+
+        </div>
+
+      </section>
+
+
+      <section class="series-panel">
+
+        <div class="series-panel-header">
+
+          <div>
+
+            <span class="eyebrow">
+              SÉRIES
+            </span>
+
+            <h3>
+              Registre sua execução
+            </h3>
+
+          </div>
+
+
+          <div class="series-counter">
+            <strong>
+              0
+            </strong>
+            <span>
+              concluídas
+            </span>
+          </div>
+
+        </div>
 
 
         <div class="sets-table">
-
 
           <div class="set-row set-header">
 
@@ -1673,10 +1569,8 @@
           </div>
 
 
-
           <div
             id="setsContainer"
-            class="sets-container"
           >
 
             <div class="set-row">
@@ -1688,6 +1582,8 @@
               <input
                 type="number"
                 inputmode="decimal"
+                min="0"
+                step="0.5"
                 placeholder="0"
                 aria-label="Carga série 1"
               >
@@ -1695,6 +1591,8 @@
               <input
                 type="number"
                 inputmode="numeric"
+                min="0"
+                step="1"
                 placeholder="0"
                 aria-label="Repetições série 1"
               >
@@ -1704,15 +1602,12 @@
                 type="button"
                 aria-label="Concluir série 1"
               >
-
                 <svg>
                   <use href="#icon-check"></use>
                 </svg>
-
               </button>
 
             </div>
-
 
 
             <div class="set-row">
@@ -1724,6 +1619,8 @@
               <input
                 type="number"
                 inputmode="decimal"
+                min="0"
+                step="0.5"
                 placeholder="0"
                 aria-label="Carga série 2"
               >
@@ -1731,6 +1628,8 @@
               <input
                 type="number"
                 inputmode="numeric"
+                min="0"
+                step="1"
                 placeholder="0"
                 aria-label="Repetições série 2"
               >
@@ -1740,15 +1639,12 @@
                 type="button"
                 aria-label="Concluir série 2"
               >
-
                 <svg>
                   <use href="#icon-check"></use>
                 </svg>
-
               </button>
 
             </div>
-
 
 
             <div class="set-row">
@@ -1760,6 +1656,8 @@
               <input
                 type="number"
                 inputmode="decimal"
+                min="0"
+                step="0.5"
                 placeholder="0"
                 aria-label="Carga série 3"
               >
@@ -1767,6 +1665,8 @@
               <input
                 type="number"
                 inputmode="numeric"
+                min="0"
+                step="1"
                 placeholder="0"
                 aria-label="Repetições série 3"
               >
@@ -1776,18 +1676,14 @@
                 type="button"
                 aria-label="Concluir série 3"
               >
-
                 <svg>
                   <use href="#icon-check"></use>
                 </svg>
-
               </button>
 
             </div>
 
-
           </div>
-
 
 
           <button
@@ -1804,69 +1700,58 @@
 
           </button>
 
-
         </div>
-
-
-
-        <div
-          class="rest-timer hidden"
-          id="restTimer"
-        >
-
-          <span>
-            DESCANSO
-          </span>
-
-          <strong id="restTimerDisplay">
-            02:00
-          </strong>
-
-
-          <div class="rest-actions">
-
-            <button
-              type="button"
-              data-rest-adjust="-15"
-            >
-              -15s
-            </button>
-
-            <button
-              type="button"
-              id="skipRestButton"
-            >
-              PULAR
-            </button>
-
-            <button
-              type="button"
-              data-rest-adjust="15"
-            >
-              +15s
-            </button>
-
-          </div>
-
-
-        </div>
-
-
-
-        <textarea
-          id="exerciseNotes"
-          class="exercise-notes"
-          placeholder="Observações sobre o exercício..."
-          rows="3"
-        ></textarea>
-
 
       </section>
 
 
+      <section class="rest-timer">
+
+        <span>
+          DESCANSO
+        </span>
+
+        <strong id="restTimerValue">
+          02:00
+        </strong>
+
+
+        <div class="rest-actions">
+
+          <button
+            type="button"
+            id="restMinusButton"
+          >
+            -15s
+          </button>
+
+          <button
+            type="button"
+            id="restSkipButton"
+          >
+            PULAR
+          </button>
+
+          <button
+            type="button"
+            id="restPlusButton"
+          >
+            +15s
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <textarea
+        class="exercise-notes"
+        id="exerciseNotes"
+        placeholder="Observações do exercício..."
+      ></textarea>
+
 
       <div class="session-navigation">
-
 
         <button
           class="secondary-button"
@@ -1876,18 +1761,15 @@
           ANTERIOR
         </button>
 
-
         <button
           class="primary-button"
           id="nextExerciseButton"
           type="button"
         >
-          PRÓXIMO
+          PRÓXIMO EXERCÍCIO
         </button>
 
-
       </div>
-
 
 
       <button
@@ -1898,80 +1780,11 @@
         FINALIZAR TREINO
       </button>
 
-
     </main>
-
 
   </section>
 
 
-
-  <!-- =========================================================
-       MODAL GENÉRICO
-  ========================================================== -->
-
-  <div
-    class="modal-overlay hidden"
-    id="modalOverlay"
-  >
-
-    <div
-      class="modal"
-      role="dialog"
-      aria-modal="true"
-    >
-
-
-      <div class="modal-header">
-
-        <h2 id="modalTitle">
-          IRONCORE
-        </h2>
-
-
-        <button
-          class="modal-close"
-          id="modalCloseButton"
-          type="button"
-          aria-label="Fechar"
-        >
-          ×
-        </button>
-
-      </div>
-
-
-
-      <div
-        class="modal-content"
-        id="modalContent"
-      >
-      </div>
-
-
-    </div>
-
-  </div>
-
-
-
-  <!-- =========================================================
-       TOAST
-  ========================================================== -->
-
-  <div
-    class="toast hidden"
-    id="toast"
-    role="status"
-    aria-live="polite"
-  >
-  </div>
-
-
-
-  <!-- =========================================================
-       JAVASCRIPT
-  ========================================================== -->
 
   <script src="app.js?v=3" defer></script>
 
