@@ -29,7 +29,303 @@
 
   <title>IRONCORE</title>
 
-  <link rel="stylesheet" href="style.css?v=9">
+  <link rel="stylesheet" href="style.css?v=10">
+
+  <style id="ironcore-premium-hero-v10">
+    .premium-hero-v10{
+      position:relative;
+      overflow:hidden;
+      border-radius:28px;
+      border:1px solid rgba(210,167,93,.24);
+      background:
+        radial-gradient(circle at 68% 34%,rgba(210,167,93,.10),transparent 32%),
+        linear-gradient(155deg,#101318 0%,#090b0e 64%,#070809 100%);
+      box-shadow:0 24px 70px rgba(0,0,0,.38), inset 0 1px 0 rgba(255,255,255,.025);
+      padding:20px 20px 16px;
+    }
+
+    .premium-hero-v10::after{
+      content:"";
+      position:absolute;
+      left:8%;
+      right:8%;
+      bottom:0;
+      height:1px;
+      background:linear-gradient(90deg,transparent,#d1a75d,transparent);
+      opacity:.55;
+    }
+
+    .premium-hero-head{
+      position:relative;
+      z-index:3;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .premium-hero-kicker{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      color:#d1a75d;
+      font-size:10px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .premium-hero-kicker::before{
+      content:"";
+      width:3px;
+      height:18px;
+      border-radius:999px;
+      background:#d1a75d;
+      box-shadow:0 0 18px rgba(209,167,93,.32);
+    }
+
+    .premium-hero-title{
+      margin:10px 0 6px;
+      color:#f5f2ea;
+      font-size:clamp(30px,6vw,44px);
+      line-height:.95;
+      font-weight:950;
+      letter-spacing:-1.8px;
+    }
+
+    .premium-hero-sub{
+      color:#898e95;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .premium-hero-crown{
+      flex:0 0 auto;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      color:#f0ce8c;
+      background:linear-gradient(180deg,rgba(209,167,93,.12),rgba(209,167,93,.025));
+      border:1px solid rgba(209,167,93,.22);
+      font-size:22px;
+      font-weight:950;
+    }
+
+    .premium-anatomy-shell{
+      position:relative;
+      z-index:2;
+      min-height:300px;
+      display:grid;
+      grid-template-columns:minmax(120px,.75fr) minmax(230px,1.5fr) minmax(120px,.75fr);
+      align-items:center;
+      gap:12px;
+      margin:4px 0 0;
+    }
+
+    .premium-anatomy-shell::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:48%;
+      width:330px;
+      height:260px;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(209,167,93,.12),rgba(209,167,93,.03) 45%,transparent 72%);
+      filter:blur(10px);
+      pointer-events:none;
+    }
+
+    .premium-muscle-note{
+      position:relative;
+      z-index:3;
+      padding:13px 14px;
+      border-radius:16px;
+      background:rgba(8,10,12,.80);
+      border:1px solid rgba(209,167,93,.12);
+      backdrop-filter:blur(10px);
+      -webkit-backdrop-filter:blur(10px);
+    }
+
+    .premium-muscle-note strong{
+      display:block;
+      color:#f5f2ea;
+      font-size:12px;
+      letter-spacing:.02em;
+    }
+
+    .premium-muscle-note small{
+      display:block;
+      margin-top:3px;
+      color:#7d8289;
+      font-size:8px;
+      font-weight:800;
+      letter-spacing:.10em;
+    }
+
+    .premium-muscle-note span{
+      display:inline-grid;
+      place-items:center;
+      width:29px;
+      height:29px;
+      margin-bottom:8px;
+      border-radius:9px;
+      color:#f0ce8c;
+      background:rgba(209,167,93,.10);
+      border:1px solid rgba(209,167,93,.20);
+      font-size:9px;
+      font-weight:950;
+    }
+
+    .premium-muscle-note.left::after,
+    .premium-muscle-note.right::before{
+      content:"";
+      position:absolute;
+      top:50%;
+      width:54px;
+      height:1px;
+      background:linear-gradient(90deg,#d1a75d,transparent);
+      opacity:.45;
+    }
+
+    .premium-muscle-note.left::after{left:100%}
+    .premium-muscle-note.right::before{
+      right:100%;
+      transform:rotate(180deg);
+    }
+
+    .premium-anatomy-figure{
+      position:relative;
+      z-index:2;
+      min-height:286px;
+      display:grid;
+      place-items:center;
+    }
+
+    .premium-anatomy-figure svg{
+      width:min(100%,310px);
+      height:auto;
+      overflow:visible;
+      filter:drop-shadow(0 22px 28px rgba(0,0,0,.48));
+    }
+
+    .premium-focus-strip{
+      position:relative;
+      z-index:3;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
+      margin:-10px 0 12px;
+      color:#d1a75d;
+      font-size:9px;
+      font-weight:900;
+      letter-spacing:.14em;
+    }
+
+    .premium-focus-strip::before,
+    .premium-focus-strip::after{
+      content:"";
+      width:48px;
+      height:1px;
+      background:linear-gradient(90deg,transparent,#d1a75d);
+      opacity:.45;
+    }
+
+    .premium-focus-strip::after{transform:rotate(180deg)}
+
+    .premium-start-v10{
+      min-height:58px !important;
+      border-radius:16px !important;
+      background:linear-gradient(135deg,#f1d08f 0%,#d5aa60 54%,#ab7a38 100%) !important;
+      color:#08090a !important;
+      box-shadow:0 14px 34px rgba(209,167,93,.18) !important;
+      font-size:12px !important;
+      font-weight:950 !important;
+      letter-spacing:.06em !important;
+    }
+
+    .premium-start-v10 svg{color:#08090a !important}
+
+    .premium-stats-v10{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:9px;
+      margin-top:11px;
+    }
+
+    .premium-stats-v10>div{
+      min-height:64px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      padding:12px;
+      border-radius:14px;
+      background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.012));
+      border:1px solid rgba(255,255,255,.05);
+    }
+
+    .premium-stats-v10 span{
+      color:#777c83;
+      font-size:8px;
+      font-weight:800;
+      letter-spacing:.06em;
+    }
+
+    .premium-stats-v10 strong{
+      margin-top:5px;
+      color:#f5f2ea;
+      font-size:15px;
+      font-weight:900;
+    }
+
+    .premium-stats-v10 .premium-stat-gold{
+      color:#f0ce8c;
+    }
+
+    @media (max-width:620px){
+      .premium-hero-v10{padding:16px 14px 14px}
+      .premium-hero-title{font-size:30px}
+      .premium-anatomy-shell{
+        min-height:260px;
+        grid-template-columns:84px 1fr 84px;
+        gap:6px;
+      }
+      .premium-muscle-note{
+        padding:9px 8px;
+        border-radius:13px;
+      }
+      .premium-muscle-note span{
+        width:24px;
+        height:24px;
+      }
+      .premium-muscle-note strong{font-size:9px}
+      .premium-muscle-note small{display:none}
+      .premium-muscle-note.left::after,
+      .premium-muscle-note.right::before{width:22px}
+      .premium-anatomy-figure{min-height:235px}
+      .premium-anatomy-figure svg{width:min(100%,230px)}
+      .premium-stats-v10>div{min-height:58px;padding:9px}
+      .premium-stats-v10 strong{font-size:13px}
+    }
+
+    @media (max-width:380px){
+      .premium-anatomy-shell{
+        grid-template-columns:68px 1fr 68px;
+      }
+      .premium-muscle-note{
+        padding:7px 6px;
+      }
+      .premium-muscle-note strong{font-size:8px}
+      .premium-muscle-note.left::after,
+      .premium-muscle-note.right::before{display:none}
+    }
+  </style>
+
 </head>
 
 <body>
@@ -286,62 +582,157 @@
         </div>
 
 
-        <section class="hero-workout-card premium-hero">
+        <section class="hero-workout-card premium-hero-v10">
 
-          <div class="premium-hero-top">
-            <div class="hero-workout-copy">
-              <span class="eyebrow">TREINO DE HOJE</span>
+          <div class="premium-hero-head">
 
-              <h2>PEITO + TRÍCEPS</h2>
+            <div>
+              <span class="premium-hero-kicker">TREINO DE HOJE</span>
 
-              <p>7 exercícios • 24 séries</p>
+              <h2 class="premium-hero-title">PEITO + TRÍCEPS</h2>
+
+              <p class="premium-hero-sub">7 exercícios • 24 séries</p>
             </div>
 
-            <div class="premium-workout-badge" aria-label="Treino A">
-              <span>A</span>
-              <small>FOCO</small>
+            <div class="premium-hero-crown" aria-label="Treino A">
+              A
             </div>
+
           </div>
 
-          <div class="premium-anatomy-stage">
 
-            <div class="anatomy-glow"></div>
+          <div class="premium-anatomy-shell">
 
-            <div class="premium-anatomy-placeholder" aria-label="Anatomia de peito e tríceps">
-              <svg>
-                <use href="#icon-body"></use>
+            <div class="premium-muscle-note left">
+              <span>01</span>
+              <strong>PEITO</strong>
+              <small>FOCO PRINCIPAL</small>
+            </div>
+
+
+            <div class="premium-anatomy-figure" aria-label="Anatomia de peito e tríceps">
+
+              <svg viewBox="0 0 320 360" role="img" aria-label="Torso anatômico com peito e tríceps destacados">
+
+                <defs>
+                  <linearGradient id="bodyMetal" x1="0" x2="1">
+                    <stop offset="0%" stop-color="#1b1e22"/>
+                    <stop offset="50%" stop-color="#4a4f55"/>
+                    <stop offset="100%" stop-color="#17191d"/>
+                  </linearGradient>
+
+                  <linearGradient id="muscleRed" x1="0" x2="1">
+                    <stop offset="0%" stop-color="#b9122a"/>
+                    <stop offset="50%" stop-color="#ff304b"/>
+                    <stop offset="100%" stop-color="#8b0c1d"/>
+                  </linearGradient>
+
+                  <filter id="redGlow">
+                    <feGaussianBlur stdDeviation="5" result="blur"/>
+                    <feMerge>
+                      <feMergeNode in="blur"/>
+                      <feMergeNode in="SourceGraphic"/>
+                    </feMerge>
+                  </filter>
+                </defs>
+
+                <!-- cabeça e pescoço -->
+                <ellipse cx="160" cy="40" rx="33" ry="39" fill="url(#bodyMetal)"/>
+                <path d="M142 74 L178 74 L184 105 L136 105 Z" fill="url(#bodyMetal)"/>
+
+                <!-- ombros e tronco -->
+                <path d="M90 105
+                         C108 87 127 82 160 82
+                         C193 82 212 87 230 105
+                         L248 156
+                         C243 213 226 274 205 332
+                         L115 332
+                         C94 274 77 213 72 156 Z"
+                      fill="url(#bodyMetal)"/>
+
+                <!-- braço esquerdo -->
+                <path d="M88 108
+                         C62 114 45 137 40 169
+                         C34 207 39 250 52 292
+                         L77 286
+                         C66 244 67 204 73 170
+                         C76 150 83 130 101 119 Z"
+                      fill="url(#bodyMetal)"/>
+
+                <!-- braço direito -->
+                <path d="M232 108
+                         C258 114 275 137 280 169
+                         C286 207 281 250 268 292
+                         L243 286
+                         C254 244 253 204 247 170
+                         C244 150 237 130 219 119 Z"
+                      fill="url(#bodyMetal)"/>
+
+                <!-- peitoral esquerdo -->
+                <path d="M105 111
+                         C118 99 138 97 154 104
+                         L154 165
+                         C137 175 112 172 95 157
+                         C92 138 96 120 105 111 Z"
+                      fill="url(#muscleRed)"
+                      filter="url(#redGlow)"/>
+
+                <!-- peitoral direito -->
+                <path d="M215 111
+                         C202 99 182 97 166 104
+                         L166 165
+                         C183 175 208 172 225 157
+                         C228 138 224 120 215 111 Z"
+                      fill="url(#muscleRed)"
+                      filter="url(#redGlow)"/>
+
+                <!-- tríceps esquerdo -->
+                <path d="M70 134
+                         C57 145 54 166 56 193
+                         C58 219 61 238 67 254
+                         L82 248
+                         C76 224 75 203 77 180
+                         C79 161 84 147 90 137 Z"
+                      fill="url(#muscleRed)"
+                      opacity=".92"/>
+
+                <!-- tríceps direito -->
+                <path d="M250 134
+                         C263 145 266 166 264 193
+                         C262 219 259 238 253 254
+                         L238 248
+                         C244 224 245 203 243 180
+                         C241 161 236 147 230 137 Z"
+                      fill="url(#muscleRed)"
+                      opacity=".92"/>
+
+                <!-- linha central / abdômen -->
+                <path d="M160 168 L160 320" stroke="#111316" stroke-width="4" opacity=".75"/>
+                <path d="M126 190 C140 198 149 198 160 194" stroke="#202328" stroke-width="3" fill="none"/>
+                <path d="M194 190 C180 198 171 198 160 194" stroke="#202328" stroke-width="3" fill="none"/>
+                <path d="M125 220 C140 228 150 228 160 224" stroke="#202328" stroke-width="3" fill="none"/>
+                <path d="M195 220 C180 228 170 228 160 224" stroke="#202328" stroke-width="3" fill="none"/>
+                <path d="M128 250 C141 257 151 257 160 253" stroke="#202328" stroke-width="3" fill="none"/>
+                <path d="M192 250 C179 257 169 257 160 253" stroke="#202328" stroke-width="3" fill="none"/>
               </svg>
 
-              <span>PEITO + TRÍCEPS</span>
-              <small>ANATOMIA PREMIUM</small>
             </div>
 
-            <div class="muscle-focus muscle-focus-left">
-              <span>01</span>
-              <div>
-                <strong>PEITO</strong>
-                <small>FOCO PRINCIPAL</small>
-              </div>
-            </div>
 
-            <div class="muscle-focus muscle-focus-right">
+            <div class="premium-muscle-note right">
               <span>02</span>
-              <div>
-                <strong>TRÍCEPS</strong>
-                <small>FOCO SECUNDÁRIO</small>
-              </div>
+              <strong>TRÍCEPS</strong>
+              <small>FOCO SECUNDÁRIO</small>
             </div>
 
           </div>
 
-          <div class="premium-focus-label">
-            <span></span>
-            MÚSCULOS EM FOCO
-            <span></span>
-          </div>
+
+          <div class="premium-focus-strip">MÚSCULOS EM FOCO</div>
+
 
           <button
-            class="primary-button hero-start-button premium-start-button"
+            class="primary-button hero-start-button premium-start-v10"
             id="startWorkoutButton"
             type="button"
           >
@@ -352,7 +743,8 @@
             </svg>
           </button>
 
-          <div class="hero-stats premium-hero-stats">
+
+          <div class="premium-stats-v10">
 
             <div>
               <span>ÚLTIMO TREINO</span>
@@ -366,7 +758,7 @@
 
             <div>
               <span>PRs</span>
-              <strong class="accent-text">0</strong>
+              <strong class="premium-stat-gold">0</strong>
             </div>
 
           </div>
