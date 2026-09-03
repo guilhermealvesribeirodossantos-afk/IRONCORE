@@ -8,11 +8,8 @@ document.addEventListener("DOMContentLoaded", function () {
      NAVEGAÇÃO
   ========================================================= */
 
-  const screens =
-    document.querySelectorAll(".screen");
-
-  const navItems =
-    document.querySelectorAll(".nav-item");
+  const screens = document.querySelectorAll(".screen");
+  const navItems = document.querySelectorAll(".nav-item");
 
   function abrirTela(tela) {
 
@@ -20,10 +17,9 @@ document.addEventListener("DOMContentLoaded", function () {
       screen.classList.remove("active");
     });
 
-    const destino =
-      document.querySelector(
-        '[data-screen="' + tela + '"]'
-      );
+    const destino = document.querySelector(
+      '[data-screen="' + tela + '"]'
+    );
 
     if (destino) {
       destino.classList.add("active");
@@ -44,16 +40,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   navItems.forEach(function (item) {
 
-    item.addEventListener(
-      "click",
-      function () {
-
-        abrirTela(
-          item.dataset.target
-        );
-
-      }
-    );
+    item.addEventListener("click", function () {
+      abrirTela(item.dataset.target);
+    });
 
   });
 
@@ -63,89 +52,76 @@ document.addEventListener("DOMContentLoaded", function () {
   ========================================================= */
 
   const iniciarTreino =
-    document.getElementById(
-      "startWorkoutButton"
-    );
+    document.getElementById("startWorkoutButton");
 
   const telaTreino =
-    document.getElementById(
-      "workoutSession"
-    );
+    document.getElementById("workoutSession");
 
   const fecharTreino =
-    document.getElementById(
-      "closeWorkoutSession"
-    );
+    document.getElementById("closeWorkoutSession");
 
   if (iniciarTreino && telaTreino) {
 
-    iniciarTreino.addEventListener(
-      "click",
-      function () {
+    iniciarTreino.addEventListener("click", function () {
 
-        telaTreino.classList.remove(
-          "hidden"
-        );
+      telaTreino.classList.remove("hidden");
 
-        document.body.style.overflow =
-          "hidden";
+      document.body.style.overflow = "hidden";
 
-      }
-    );
+    });
 
   }
 
   if (fecharTreino && telaTreino) {
 
-    fecharTreino.addEventListener(
-      "click",
-      function () {
+    fecharTreino.addEventListener("click", function () {
 
-        telaTreino.classList.add(
-          "hidden"
-        );
+      telaTreino.classList.add("hidden");
 
-        document.body.style.overflow =
-          "";
+      document.body.style.overflow = "";
 
-      }
-    );
+    });
 
   }
 
 
   /* =========================================================
-     SÉRIES
+     SISTEMA DE SÉRIES
   ========================================================= */
 
   const setsContainer =
-    document.getElementById(
-      "setsContainer"
-    );
+    document.getElementById("setsContainer");
 
   const addSetButton =
-    document.getElementById(
-      "addSetButton"
-    );
+    document.getElementById("addSetButton");
 
   const STORAGE_KEY =
-    "ironcore_series_teste";
+    "ironcore_series_v2";
 
+
+  /* =========================================================
+     CARREGAR DADOS
+  ========================================================= */
 
   function carregarSeries() {
 
     try {
 
-      const salvo =
-        localStorage.getItem(
-          STORAGE_KEY
-        );
+      const dados =
+        localStorage.getItem(STORAGE_KEY);
 
-      if (!salvo) {
+      if (!dados) {
         return [];
       }
 
-      return JSON.parse(salvo);
+      const convertido =
+        JSON.parse(dados);
+
+      if (!Array.isArray(convertido)) {
+        return [];
+      }
+
+      return convertido;
 
     } catch (erro) {
 
@@ -161,75 +137,178 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  function salvarSeries(series) {
+  /* =========================================================
+     SALVAR TODAS AS SÉRIES
+  ========================================================= */
 
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify(series)
-    );
-
-  }
-
-
-  let seriesSalvas =
-    carregarSeries();
-
-
-  function configurarLinhas() {
+  function salvarTodasSeries() {
 
     if (!setsContainer) {
       return;
     }
 
     const linhas =
-      setsContainer.querySelectorAll(
-        ".set-row"
-      );
+      setsContainer.querySelectorAll(".set-row");
 
-    linhas.forEach(function (
-      linha,
-      indice
-    ) {
+    const dados = [];
+
+    linhas.forEach(function (linha) {
 
       const inputs =
-        linha.querySelectorAll(
-          "input"
-        );
+        linha.querySelectorAll("input");
+
+      if (inputs.length < 2) {
+        return;
+      }
+
+      dados.push({
+
+        kg:
+          inputs[0].value,
+
+        reps:
+          inputs[1].value,
+
+        concluida:
+          linha.classList.contains("completed")
+
+      });
+
+    });
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(dados)
+    );
+
+  }
+
+
+  /* =========================================================
+     CRIAR LINHA DE SÉRIE
+  ========================================================= */
+
+  function criarLinhaSerie(numero) {
+
+    const linha =
+      document.createElement("div");
+
+    linha.className = "set-row";
+
+    linha.innerHTML = `
+      <strong>${numero}</strong>
+
+      <input
+        type="number"
+        inputmode="decimal"
+        min="0"
+        step="0.5"
+        placeholder="0"
+        aria-label="Carga série ${numero}"
+      >
+
+      <input
+        type="number"
+        inputmode="numeric"
+        min="0"
+        step="1"
+        placeholder="0"
+        aria-label="Repetições série ${numero}"
+      >
+
+      <button
+        class="complete-set-button"
+        type="button"
+        aria-label="Concluir série ${numero}"
+      >
+
+        <svg>
+          <use href="#icon-check"></use>
+        </svg>
+
+      </button>
+    `;
+
+    return linha;
+
+  }
+
+
+  /* =========================================================
+     RESTAURAR SÉRIES SALVAS
+  ========================================================= */
+
+  function restaurarSeries() {
+
+    if (!setsContainer) {
+      return;
+    }
+
+    const seriesSalvas =
+      carregarSeries();
+
+    /*
+      O HTML começa com 3 séries.
+
+      Se o usuário salvou 4, 5, 6...
+      recriamos automaticamente as extras.
+    */
+
+    while (
+      setsContainer.querySelectorAll(".set-row").length <
+      seriesSalvas.length
+    ) {
+
+      const numero =
+        setsContainer.querySelectorAll(".set-row").length + 1;
+
+      const novaLinha =
+        criarLinhaSerie(numero);
+
+      setsContainer.appendChild(
+        novaLinha
+      );
+
+    }
+
+
+    const linhas =
+      setsContainer.querySelectorAll(".set-row");
+
+    linhas.forEach(function (linha, indice) {
+
+      const salvo =
+        seriesSalvas[indice];
+
+      if (!salvo) {
+        return;
+      }
+
+      const inputs =
+        linha.querySelectorAll("input");
 
       const botao =
         linha.querySelector(
           ".complete-set-button"
         );
 
-      if (
-        inputs.length < 2 ||
-        !botao
-      ) {
-        return;
-      }
+      if (inputs.length >= 2) {
 
-      const inputKg =
-        inputs[0];
-
-      const inputReps =
-        inputs[1];
-
-      const salvo =
-        seriesSalvas[indice];
-
-      if (salvo) {
-
-        inputKg.value =
+        inputs[0].value =
           salvo.kg ?? "";
 
-        inputReps.value =
+        inputs[1].value =
           salvo.reps ?? "";
 
-        if (salvo.concluida) {
+      }
 
-          linha.classList.add(
-            "completed"
-          );
+      if (salvo.concluida) {
+
+        linha.classList.add(
+          "completed"
+        );
+
+        if (botao) {
 
           botao.classList.add(
             "completed"
@@ -239,126 +318,116 @@ document.addEventListener("DOMContentLoaded", function () {
 
       }
 
-
-      inputKg.addEventListener(
-        "input",
-        function () {
-
-          salvarLinha(
-            indice,
-            linha
-          );
-
-        }
-      );
-
-
-      inputReps.addEventListener(
-        "input",
-        function () {
-
-          salvarLinha(
-            indice,
-            linha
-          );
-
-        }
-      );
-
-
-      botao.addEventListener(
-        "click",
-        function () {
-
-          const kg =
-            Number(
-              inputKg.value
-            );
-
-          const reps =
-            Number(
-              inputReps.value
-            );
-
-          if (
-            kg <= 0 ||
-            reps <= 0
-          ) {
-
-            alert(
-              "Informe a carga e as repetições antes de concluir a série."
-            );
-
-            return;
-
-          }
-
-          const concluida =
-            !linha.classList.contains(
-              "completed"
-            );
-
-          linha.classList.toggle(
-            "completed",
-            concluida
-          );
-
-          botao.classList.toggle(
-            "completed",
-            concluida
-          );
-
-          salvarLinha(
-            indice,
-            linha
-          );
-
-        }
-      );
-
     });
 
   }
 
 
-  function salvarLinha(
-    indice,
-    linha
-  ) {
+  /* =========================================================
+     DIGITAR KG / REPS
+  ========================================================= */
 
-    const inputs =
-      linha.querySelectorAll(
-        "input"
-      );
+  if (setsContainer) {
 
-    if (inputs.length < 2) {
-      return;
-    }
+    setsContainer.addEventListener(
+      "input",
+      function (evento) {
 
-    seriesSalvas[indice] = {
+        const alvo =
+          evento.target;
 
-      kg:
-        inputs[0].value,
+        if (
+          alvo &&
+          alvo.tagName === "INPUT"
+        ) {
 
-      reps:
-        inputs[1].value,
+          salvarTodasSeries();
 
-      concluida:
-        linha.classList.contains(
-          "completed"
-        )
+        }
 
-    };
-
-    salvarSeries(
-      seriesSalvas
+      }
     );
 
   }
 
 
   /* =========================================================
-     ADICIONAR SÉRIE
+     CONCLUIR SÉRIE
+  ========================================================= */
+
+  if (setsContainer) {
+
+    setsContainer.addEventListener(
+      "click",
+      function (evento) {
+
+        const botao =
+          evento.target.closest(
+            ".complete-set-button"
+          );
+
+        if (!botao) {
+          return;
+        }
+
+        const linha =
+          botao.closest(".set-row");
+
+        if (!linha) {
+          return;
+        }
+
+        const inputs =
+          linha.querySelectorAll("input");
+
+        if (inputs.length < 2) {
+          return;
+        }
+
+        const kg =
+          Number(inputs[0].value);
+
+        const reps =
+          Number(inputs[1].value);
+
+        if (
+          kg <= 0 ||
+          reps <= 0
+        ) {
+
+          alert(
+            "Informe a carga e as repetições antes de concluir a série."
+          );
+
+          return;
+
+        }
+
+        const concluida =
+          !linha.classList.contains(
+            "completed"
+          );
+
+        linha.classList.toggle(
+          "completed",
+          concluida
+        );
+
+        botao.classList.toggle(
+          "completed",
+          concluida
+        );
+
+        salvarTodasSeries();
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
+     ADICIONAR NOVA SÉRIE
   ========================================================= */
 
   if (
@@ -368,59 +437,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
     addSetButton.addEventListener(
       "click",
-      function () {
+      function (evento) {
 
-        const numero =
+        evento.preventDefault();
+
+        const quantidade =
           setsContainer.querySelectorAll(
             ".set-row"
-          ).length + 1;
+          ).length;
 
-        const linha =
-          document.createElement(
-            "div"
-          );
+        const numero =
+          quantidade + 1;
 
-        linha.className =
-          "set-row";
-
-        linha.innerHTML = `
-          <strong>${numero}</strong>
-
-          <input
-            type="number"
-            inputmode="decimal"
-            min="0"
-            step="0.5"
-            placeholder="0"
-            aria-label="Carga série ${numero}"
-          >
-
-          <input
-            type="number"
-            inputmode="numeric"
-            min="0"
-            placeholder="0"
-            aria-label="Repetições série ${numero}"
-          >
-
-          <button
-            class="complete-set-button"
-            type="button"
-            aria-label="Concluir série ${numero}"
-          >
-
-            <svg>
-              <use href="#icon-check"></use>
-            </svg>
-
-          </button>
-        `;
+        const novaLinha =
+          criarLinhaSerie(numero);
 
         setsContainer.appendChild(
-          linha
+          novaLinha
         );
 
-        configurarLinhas();
+        salvarTodasSeries();
+
+        novaLinha.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest"
+        });
+
+        console.log(
+          "Série " + numero + " adicionada"
+        );
 
       }
     );
@@ -429,9 +474,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =========================================================
-     INICIAR SISTEMA DE SÉRIES
+     INICIALIZAÇÃO
   ========================================================= */
 
-  configurarLinhas();
+  restaurarSeries();
 
 });
