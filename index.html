@@ -1,1 +1,1979 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
 
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no"
+  >
+
+  <meta name="theme-color" content="#050505">
+  <meta name="color-scheme" content="dark">
+
+  <meta
+    name="description"
+    content="IRONCORE - App pessoal para treinos, cargas, progressão e evolução física."
+  >
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- iPhone / iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta
+    name="apple-mobile-web-app-status-bar-style"
+    content="black-translucent"
+  >
+  <meta name="apple-mobile-web-app-title" content="IRONCORE">
+
+  <!-- Ícone será adicionado posteriormente -->
+  <link
+    rel="apple-touch-icon"
+    href="assets/icon-192.png"
+  >
+
+  <title>IRONCORE</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================================================
+       SVG ICONS
+  ========================================================== -->
+
+  <svg
+    aria-hidden="true"
+    style="display:none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+
+    <symbol id="icon-home" viewBox="0 0 24 24">
+      <path
+        d="M3 11.5 12 4l9 7.5v8a1.5 1.5 0 0 1-1.5 1.5h-5v-6h-5v6h-5A1.5 1.5 0 0 1 3 19.5z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-dumbbell" viewBox="0 0 24 24">
+      <path
+        d="M4 9v6M7 7v10M17 7v10M20 9v6M7 12h10"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-history" viewBox="0 0 24 24">
+      <path
+        d="M3 12a9 9 0 1 0 3-6.7L3 8"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+
+      <path
+        d="M3 4v4h4M12 7v5l3 2"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-chart" viewBox="0 0 24 24">
+      <path
+        d="M4 20V10M10 20V5M16 20v-8M22 20H2"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-user" viewBox="0 0 24 24">
+      <circle
+        cx="12"
+        cy="8"
+        r="4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+
+      <path
+        d="M4 21c.7-4.3 3.3-6.5 8-6.5s7.3 2.2 8 6.5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-plus" viewBox="0 0 24 24">
+      <path
+        d="M12 5v14M5 12h14"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+      <path
+        d="m9 6 6 6-6 6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-back" viewBox="0 0 24 24">
+      <path
+        d="m15 18-6-6 6-6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-check" viewBox="0 0 24 24">
+      <path
+        d="m5 12 4 4L19 6"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-fire" viewBox="0 0 24 24">
+      <path
+        d="M12 22c4 0 7-2.8 7-6.6 0-3.4-2.2-5.7-4.5-8.2-.1 2-1.1 3.3-2.2 4.3.1-3.1-1.7-6.5-5.1-9.5.2 4-2.2 6.6-2.2 10.4C5 18.1 8 22 12 22Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+    <symbol id="icon-trophy" viewBox="0 0 24 24">
+      <path
+        d="M8 4h8v4c0 4-1.6 6-4 6s-4-2-4-6V4Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+
+      <path
+        d="M8 6H5c0 4 1 6 4 6M16 6h3c0 4-1 6-4 6M12 14v4M8 21h8M10 18h4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+      />
+    </symbol>
+
+    <symbol id="icon-edit" viewBox="0 0 24 24">
+      <path
+        d="M4 20h4L19 9l-4-4L4 16v4Z"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linejoin="round"
+      />
+
+      <path
+        d="m13.5 6.5 4 4"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+      />
+    </symbol>
+
+    <symbol id="icon-trash" viewBox="0 0 24 24">
+      <path
+        d="M5 7h14M9 7V4h6v3M7 7l1 13h8l1-13"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+    </symbol>
+
+  </svg>
+
+
+
+  <!-- =========================================================
+       APP
+  ========================================================== -->
+
+  <div id="app" class="app">
+
+    <!-- =======================================================
+         HEADER
+    ======================================================== -->
+
+    <header class="topbar">
+
+      <button
+        class="icon-button"
+        id="menuButton"
+        type="button"
+        aria-label="Menu"
+      >
+        <span class="menu-lines">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+
+      <div class="brand">
+        <span class="brand-white">IRON</span>
+        <span class="brand-red">CORE</span>
+      </div>
+
+
+      <button
+        class="notification-button"
+        type="button"
+        aria-label="Notificações"
+      >
+        <span class="notification-dot"></span>
+        🔔
+      </button>
+
+    </header>
+
+
+
+    <!-- =======================================================
+         CONTEÚDO PRINCIPAL
+    ======================================================== -->
+
+    <main class="main-content">
+
+
+
+      <!-- =====================================================
+           TELA: HOJE
+      ====================================================== -->
+
+      <section
+        class="screen active"
+        id="screen-home"
+        data-screen="home"
+      >
+
+        <div class="welcome-block">
+
+          <p class="eyebrow">
+            BOM DIA,
+          </p>
+
+          <h1 id="userGreeting">
+            GUILHERME
+          </h1>
+
+        </div>
+
+
+        <section class="today-workout-card">
+
+          <div class="section-label">
+            TREINO DE HOJE
+          </div>
+
+          <div class="today-workout-header">
+
+            <div>
+
+              <h2 id="todayWorkoutName">
+                PEITO + TRÍCEPS
+              </h2>
+
+              <p id="todayWorkoutDetails">
+                7 exercícios • 24 séries
+              </p>
+
+            </div>
+
+
+            <div class="workout-badge">
+              A
+            </div>
+
+          </div>
+
+
+          <button
+            class="primary-button"
+            id="startWorkoutButton"
+            type="button"
+          >
+            INICIAR TREINO
+            <span>▶</span>
+          </button>
+
+
+          <div class="stats-grid">
+
+            <article class="stat-card">
+
+              <span class="stat-label">
+                Último treino
+              </span>
+
+              <strong id="lastWorkoutDate">
+                --
+              </strong>
+
+            </article>
+
+
+            <article class="stat-card">
+
+              <span class="stat-label">
+                Volume
+              </span>
+
+              <strong id="lastWorkoutVolume">
+                0 kg
+              </strong>
+
+            </article>
+
+
+            <article class="stat-card">
+
+              <span class="stat-label">
+                PRs recentes
+              </span>
+
+              <strong class="highlight-stat">
+                <span id="recentPRs">0</span>
+                🔥
+              </strong>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+
+        <!-- DESTAQUES -->
+
+        <section class="dashboard-section">
+
+          <div class="section-heading">
+
+            <h3>
+              DESTAQUES
+            </h3>
+
+          </div>
+
+
+          <div class="highlight-grid">
+
+
+            <article class="highlight-card">
+
+              <div class="highlight-icon">
+                <svg>
+                  <use href="#icon-dumbbell"></use>
+                </svg>
+              </div>
+
+              <div>
+
+                <span>
+                  Melhor carga
+                </span>
+
+                <strong id="bestLoadHighlight">
+                  --
+                </strong>
+
+              </div>
+
+            </article>
+
+
+
+            <article class="highlight-card">
+
+              <div class="highlight-icon">
+                <svg>
+                  <use href="#icon-trophy"></use>
+                </svg>
+              </div>
+
+              <div>
+
+                <span>
+                  Recordes
+                </span>
+
+                <strong id="totalPRHighlight">
+                  0 PRs
+                </strong>
+
+              </div>
+
+            </article>
+
+
+
+            <article class="highlight-card">
+
+              <div class="highlight-icon">
+                <svg>
+                  <use href="#icon-fire"></use>
+                </svg>
+              </div>
+
+              <div>
+
+                <span>
+                  Sequência
+                </span>
+
+                <strong id="streakHighlight">
+                  0 dias
+                </strong>
+
+              </div>
+
+            </article>
+
+
+
+            <article class="highlight-card">
+
+              <div class="highlight-icon">
+                <svg>
+                  <use href="#icon-chart"></use>
+                </svg>
+              </div>
+
+              <div>
+
+                <span>
+                  Treinos
+                </span>
+
+                <strong id="totalWorkoutsHighlight">
+                  0
+                </strong>
+
+              </div>
+
+            </article>
+
+
+          </div>
+
+        </section>
+
+
+
+        <!-- PRÓXIMO TREINO -->
+
+        <section class="dashboard-section">
+
+          <div class="section-heading">
+
+            <h3>
+              PRÓXIMO TREINO
+            </h3>
+
+          </div>
+
+
+          <button
+            class="next-workout-card"
+            id="nextWorkoutCard"
+            type="button"
+          >
+
+            <div>
+
+              <span class="small-label">
+                PRÓXIMA SESSÃO
+              </span>
+
+              <strong id="nextWorkoutName">
+                COSTAS + BÍCEPS
+              </strong>
+
+              <small id="nextWorkoutInfo">
+                Treino B
+              </small>
+
+            </div>
+
+
+            <svg>
+              <use href="#icon-chevron-right"></use>
+            </svg>
+
+          </button>
+
+        </section>
+
+
+      </section>
+
+
+
+      <!-- =====================================================
+           TELA: TREINOS
+      ====================================================== -->
+
+      <section
+        class="screen"
+        id="screen-workouts"
+        data-screen="workouts"
+      >
+
+        <div class="screen-header">
+
+          <div>
+
+            <span class="eyebrow">
+              SUA ROTINA
+            </span>
+
+            <h1>
+              TREINOS
+            </h1>
+
+          </div>
+
+
+          <button
+            class="round-action-button"
+            id="addWorkoutButton"
+            type="button"
+            aria-label="Adicionar treino"
+          >
+
+            <svg>
+              <use href="#icon-plus"></use>
+            </svg>
+
+          </button>
+
+        </div>
+
+
+
+        <div
+          class="workout-list"
+          id="workoutList"
+        >
+
+
+          <article
+            class="workout-card"
+            data-workout="A"
+          >
+
+            <button
+              class="workout-card-main"
+              type="button"
+              data-open-workout="A"
+            >
+
+              <div class="workout-letter">
+                A
+              </div>
+
+
+              <div class="workout-info">
+
+                <strong>
+                  PEITO + TRÍCEPS
+                </strong>
+
+                <span>
+                  7 exercícios
+                </span>
+
+              </div>
+
+
+              <svg class="chevron">
+                <use href="#icon-chevron-right"></use>
+              </svg>
+
+            </button>
+
+
+            <button
+              class="workout-edit"
+              type="button"
+              data-edit-workout="A"
+              aria-label="Editar treino A"
+            >
+
+              <svg>
+                <use href="#icon-edit"></use>
+              </svg>
+
+            </button>
+
+          </article>
+
+
+
+          <article
+            class="workout-card"
+            data-workout="B"
+          >
+
+            <button
+              class="workout-card-main"
+              type="button"
+              data-open-workout="B"
+            >
+
+              <div class="workout-letter">
+                B
+              </div>
+
+              <div class="workout-info">
+
+                <strong>
+                  COSTAS + BÍCEPS
+                </strong>
+
+                <span>
+                  7 exercícios
+                </span>
+
+              </div>
+
+              <svg class="chevron">
+                <use href="#icon-chevron-right"></use>
+              </svg>
+
+            </button>
+
+
+            <button
+              class="workout-edit"
+              type="button"
+              data-edit-workout="B"
+              aria-label="Editar treino B"
+            >
+
+              <svg>
+                <use href="#icon-edit"></use>
+              </svg>
+
+            </button>
+
+          </article>
+
+
+
+          <article
+            class="workout-card"
+            data-workout="C"
+          >
+
+            <button
+              class="workout-card-main"
+              type="button"
+              data-open-workout="C"
+            >
+
+              <div class="workout-letter">
+                C
+              </div>
+
+              <div class="workout-info">
+
+                <strong>
+                  PERNAS
+                </strong>
+
+                <span>
+                  7 exercícios
+                </span>
+
+              </div>
+
+              <svg class="chevron">
+                <use href="#icon-chevron-right"></use>
+              </svg>
+
+            </button>
+
+
+            <button
+              class="workout-edit"
+              type="button"
+              data-edit-workout="C"
+              aria-label="Editar treino C"
+            >
+
+              <svg>
+                <use href="#icon-edit"></use>
+              </svg>
+
+            </button>
+
+          </article>
+
+
+
+          <article
+            class="workout-card"
+            data-workout="D"
+          >
+
+            <button
+              class="workout-card-main"
+              type="button"
+              data-open-workout="D"
+            >
+
+              <div class="workout-letter">
+                D
+              </div>
+
+              <div class="workout-info">
+
+                <strong>
+                  OMBROS + BRAÇOS
+                </strong>
+
+                <span>
+                  7 exercícios
+                </span>
+
+              </div>
+
+              <svg class="chevron">
+                <use href="#icon-chevron-right"></use>
+              </svg>
+
+            </button>
+
+
+            <button
+              class="workout-edit"
+              type="button"
+              data-edit-workout="D"
+              aria-label="Editar treino D"
+            >
+
+              <svg>
+                <use href="#icon-edit"></use>
+              </svg>
+
+            </button>
+
+          </article>
+
+
+
+          <article
+            class="workout-card"
+            data-workout="E"
+          >
+
+            <button
+              class="workout-card-main"
+              type="button"
+              data-open-workout="E"
+            >
+
+              <div class="workout-letter">
+                E
+              </div>
+
+              <div class="workout-info">
+
+                <strong>
+                  FULL BODY
+                </strong>
+
+                <span>
+                  Exercícios variáveis
+                </span>
+
+              </div>
+
+              <svg class="chevron">
+                <use href="#icon-chevron-right"></use>
+              </svg>
+
+            </button>
+
+
+            <button
+              class="workout-edit"
+              type="button"
+              data-edit-workout="E"
+              aria-label="Editar treino E"
+            >
+
+              <svg>
+                <use href="#icon-edit"></use>
+              </svg>
+
+            </button>
+
+          </article>
+
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =====================================================
+           TELA: HISTÓRICO
+      ====================================================== -->
+
+      <section
+        class="screen"
+        id="screen-history"
+        data-screen="history"
+      >
+
+        <div class="screen-header">
+
+          <div>
+
+            <span class="eyebrow">
+              SUA EVOLUÇÃO
+            </span>
+
+            <h1>
+              HISTÓRICO
+            </h1>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="tab-switcher">
+
+          <button
+            class="tab-button active"
+            type="button"
+            data-history-tab="workouts"
+          >
+            TREINOS
+          </button>
+
+          <button
+            class="tab-button"
+            type="button"
+            data-history-tab="exercises"
+          >
+            EXERCÍCIOS
+          </button>
+
+        </div>
+
+
+
+        <div
+          class="history-content"
+          id="historyContent"
+        >
+
+          <div class="empty-state">
+
+            <div class="empty-state-icon">
+              <svg>
+                <use href="#icon-history"></use>
+              </svg>
+            </div>
+
+            <h3>
+              Nenhum treino registrado
+            </h3>
+
+            <p>
+              Seus treinos concluídos aparecerão aqui.
+            </p>
+
+          </div>
+
+        </div>
+
+
+      </section>
+
+
+
+      <!-- =====================================================
+           TELA: PROGRESSO
+      ====================================================== -->
+
+      <section
+        class="screen"
+        id="screen-progress"
+        data-screen="progress"
+      >
+
+        <div class="screen-header">
+
+          <div>
+
+            <span class="eyebrow">
+              PERFORMANCE
+            </span>
+
+            <h1>
+              PROGRESSO
+            </h1>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="progress-summary-grid">
+
+
+          <article class="progress-summary-card">
+
+            <span>
+              Volume total
+            </span>
+
+            <strong id="totalVolumeProgress">
+              0 kg
+            </strong>
+
+          </article>
+
+
+
+          <article class="progress-summary-card">
+
+            <span>
+              Treinos
+            </span>
+
+            <strong id="totalWorkoutsProgress">
+              0
+            </strong>
+
+          </article>
+
+
+
+          <article class="progress-summary-card">
+
+            <span>
+              PRs
+            </span>
+
+            <strong id="totalPrProgress">
+              0
+            </strong>
+
+          </article>
+
+
+
+          <article class="progress-summary-card">
+
+            <span>
+              Frequência
+            </span>
+
+            <strong id="frequencyProgress">
+              0%
+            </strong>
+
+          </article>
+
+
+        </div>
+
+
+
+        <section class="progress-panel">
+
+          <div class="section-heading">
+
+            <h3>
+              EVOLUÇÃO DE FORÇA
+            </h3>
+
+          </div>
+
+
+          <div class="chart-placeholder">
+
+            <svg>
+              <use href="#icon-chart"></use>
+            </svg>
+
+            <span>
+              O gráfico aparecerá após seus primeiros registros.
+            </span>
+
+          </div>
+
+        </section>
+
+
+
+        <section class="progress-panel">
+
+          <div class="section-heading">
+
+            <h3>
+              GRUPOS MUSCULARES
+            </h3>
+
+          </div>
+
+
+          <div
+            class="muscle-frequency-list"
+            id="muscleFrequencyList"
+          >
+
+            <div class="muscle-frequency-item">
+
+              <span>
+                Peito
+              </span>
+
+              <div class="frequency-bar">
+                <span style="width:0%"></span>
+              </div>
+
+              <strong>
+                0%
+              </strong>
+
+            </div>
+
+
+            <div class="muscle-frequency-item">
+
+              <span>
+                Costas
+              </span>
+
+              <div class="frequency-bar">
+                <span style="width:0%"></span>
+              </div>
+
+              <strong>
+                0%
+              </strong>
+
+            </div>
+
+
+            <div class="muscle-frequency-item">
+
+              <span>
+                Pernas
+              </span>
+
+              <div class="frequency-bar">
+                <span style="width:0%"></span>
+              </div>
+
+              <strong>
+                0%
+              </strong>
+
+            </div>
+
+
+            <div class="muscle-frequency-item">
+
+              <span>
+                Ombros
+              </span>
+
+              <div class="frequency-bar">
+                <span style="width:0%"></span>
+              </div>
+
+              <strong>
+                0%
+              </strong>
+
+            </div>
+
+
+            <div class="muscle-frequency-item">
+
+              <span>
+                Bíceps
+              </span>
+
+              <div class="frequency-bar">
+                <span style="width:0%"></span>
+              </div>
+
+              <strong>
+                0%
+              </strong>
+
+            </div>
+
+
+            <div class="muscle-frequency-item">
+
+              <span>
+                Tríceps
+              </span>
+
+              <div class="frequency-bar">
+                <span style="width:0%"></span>
+              </div>
+
+              <strong>
+                0%
+              </strong>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+      </section>
+
+
+
+      <!-- =====================================================
+           TELA: PERFIL
+      ====================================================== -->
+
+      <section
+        class="screen"
+        id="screen-profile"
+        data-screen="profile"
+      >
+
+        <div class="profile-header">
+
+
+          <div class="profile-avatar">
+
+            <span>
+              G
+            </span>
+
+          </div>
+
+
+          <h1>
+            GUILHERME
+          </h1>
+
+
+          <p>
+            IRONCORE ATHLETE
+          </p>
+
+
+        </div>
+
+
+
+        <div class="profile-stats">
+
+
+          <div>
+
+            <span>
+              Treinos
+            </span>
+
+            <strong id="profileWorkoutCount">
+              0
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              PRs
+            </span>
+
+            <strong id="profilePrCount">
+              0
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              Sequência
+            </span>
+
+            <strong id="profileStreak">
+              0
+            </strong>
+
+          </div>
+
+
+        </div>
+
+
+
+        <div class="settings-list">
+
+
+          <button
+            class="settings-item"
+            type="button"
+            id="bodyDataButton"
+          >
+
+            <span>
+              ⚖️
+            </span>
+
+            <div>
+
+              <strong>
+                Peso e medidas
+              </strong>
+
+              <small>
+                Acompanhe sua evolução corporal
+              </small>
+
+            </div>
+
+            <svg>
+              <use href="#icon-chevron-right"></use>
+            </svg>
+
+          </button>
+
+
+
+          <button
+            class="settings-item"
+            type="button"
+            id="photosButton"
+          >
+
+            <span>
+              📷
+            </span>
+
+            <div>
+
+              <strong>
+                Fotos de evolução
+              </strong>
+
+              <small>
+                Compare sua evolução física
+              </small>
+
+            </div>
+
+            <svg>
+              <use href="#icon-chevron-right"></use>
+            </svg>
+
+          </button>
+
+
+
+          <button
+            class="settings-item"
+            type="button"
+            id="calendarButton"
+          >
+
+            <span>
+              📅
+            </span>
+
+            <div>
+
+              <strong>
+                Calendário
+              </strong>
+
+              <small>
+                Veja seus dias treinados
+              </small>
+
+            </div>
+
+            <svg>
+              <use href="#icon-chevron-right"></use>
+            </svg>
+
+          </button>
+
+
+
+          <button
+            class="settings-item"
+            type="button"
+            id="backupButton"
+          >
+
+            <span>
+              ☁️
+            </span>
+
+            <div>
+
+              <strong>
+                Backup
+              </strong>
+
+              <small>
+                Proteja seus dados
+              </small>
+
+            </div>
+
+            <svg>
+              <use href="#icon-chevron-right"></use>
+            </svg>
+
+          </button>
+
+
+
+          <button
+            class="settings-item"
+            type="button"
+            id="settingsButton"
+          >
+
+            <span>
+              ⚙️
+            </span>
+
+            <div>
+
+              <strong>
+                Configurações
+              </strong>
+
+              <small>
+                Preferências do IRONCORE
+              </small>
+
+            </div>
+
+            <svg>
+              <use href="#icon-chevron-right"></use>
+            </svg>
+
+          </button>
+
+
+        </div>
+
+
+        <div class="app-version">
+          IRONCORE • VERSÃO 1.0
+        </div>
+
+
+      </section>
+
+
+    </main>
+
+
+
+    <!-- =======================================================
+         NAVEGAÇÃO INFERIOR
+    ======================================================== -->
+
+    <nav
+      class="bottom-nav"
+      aria-label="Navegação principal"
+    >
+
+
+      <button
+        class="nav-item active"
+        type="button"
+        data-target="home"
+      >
+
+        <svg>
+          <use href="#icon-home"></use>
+        </svg>
+
+        <span>
+          Hoje
+        </span>
+
+      </button>
+
+
+
+      <button
+        class="nav-item"
+        type="button"
+        data-target="workouts"
+      >
+
+        <svg>
+          <use href="#icon-dumbbell"></use>
+        </svg>
+
+        <span>
+          Treinos
+        </span>
+
+      </button>
+
+
+
+      <button
+        class="nav-item"
+        type="button"
+        data-target="history"
+      >
+
+        <svg>
+          <use href="#icon-history"></use>
+        </svg>
+
+        <span>
+          Histórico
+        </span>
+
+      </button>
+
+
+
+      <button
+        class="nav-item"
+        type="button"
+        data-target="progress"
+      >
+
+        <svg>
+          <use href="#icon-chart"></use>
+        </svg>
+
+        <span>
+          Progresso
+        </span>
+
+      </button>
+
+
+
+      <button
+        class="nav-item"
+        type="button"
+        data-target="profile"
+      >
+
+        <svg>
+          <use href="#icon-user"></use>
+        </svg>
+
+        <span>
+          Perfil
+        </span>
+
+      </button>
+
+
+    </nav>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       TELA DE TREINO
+  ========================================================== -->
+
+  <section
+    class="workout-session hidden"
+    id="workoutSession"
+  >
+
+
+    <header class="session-header">
+
+
+      <button
+        class="icon-button"
+        id="closeWorkoutSession"
+        type="button"
+      >
+
+        <svg>
+          <use href="#icon-back"></use>
+        </svg>
+
+      </button>
+
+
+      <div>
+
+        <span>
+          TREINO EM ANDAMENTO
+        </span>
+
+        <strong id="sessionWorkoutName">
+          PEITO + TRÍCEPS
+        </strong>
+
+      </div>
+
+
+      <div
+        class="session-duration"
+        id="sessionDuration"
+      >
+        00:00
+      </div>
+
+
+    </header>
+
+
+
+    <main class="session-content">
+
+
+      <section class="exercise-session-card">
+
+
+        <div class="exercise-session-header">
+
+          <div>
+
+            <span class="exercise-index">
+              EXERCÍCIO 1 DE 7
+            </span>
+
+            <h2 id="currentExerciseName">
+              Supino Reto
+            </h2>
+
+          </div>
+
+
+          <button
+            class="exercise-menu-button"
+            type="button"
+          >
+            •••
+          </button>
+
+        </div>
+
+
+
+        <div class="last-performance">
+
+          <div>
+
+            <span>
+              ÚLTIMO TREINO
+            </span>
+
+            <strong id="exerciseLastPerformance">
+              --
+            </strong>
+
+          </div>
+
+
+          <div>
+
+            <span>
+              META
+            </span>
+
+            <strong id="exerciseTarget">
+              --
+            </strong>
+
+          </div>
+
+        </div>
+
+
+
+        <div class="sets-table">
+
+
+          <div class="set-row set-header">
+
+            <span>
+              SÉRIE
+            </span>
+
+            <span>
+              KG
+            </span>
+
+            <span>
+              REPS
+            </span>
+
+            <span>
+              ✓
+            </span>
+
+          </div>
+
+
+
+          <div
+            id="setsContainer"
+            class="sets-container"
+          >
+
+            <div class="set-row">
+
+              <strong>
+                1
+              </strong>
+
+              <input
+                type="number"
+                inputmode="decimal"
+                placeholder="0"
+                aria-label="Carga série 1"
+              >
+
+              <input
+                type="number"
+                inputmode="numeric"
+                placeholder="0"
+                aria-label="Repetições série 1"
+              >
+
+              <button
+                class="complete-set-button"
+                type="button"
+                aria-label="Concluir série 1"
+              >
+
+                <svg>
+                  <use href="#icon-check"></use>
+                </svg>
+
+              </button>
+
+            </div>
+
+
+
+            <div class="set-row">
+
+              <strong>
+                2
+              </strong>
+
+              <input
+                type="number"
+                inputmode="decimal"
+                placeholder="0"
+                aria-label="Carga série 2"
+              >
+
+              <input
+                type="number"
+                inputmode="numeric"
+                placeholder="0"
+                aria-label="Repetições série 2"
+              >
+
+              <button
+                class="complete-set-button"
+                type="button"
+                aria-label="Concluir série 2"
+              >
+
+                <svg>
+                  <use href="#icon-check"></use>
+                </svg>
+
+              </button>
+
+            </div>
+
+
+
+            <div class="set-row">
+
+              <strong>
+                3
+              </strong>
+
+              <input
+                type="number"
+                inputmode="decimal"
+                placeholder="0"
+                aria-label="Carga série 3"
+              >
+
+              <input
+                type="number"
+                inputmode="numeric"
+                placeholder="0"
+                aria-label="Repetições série 3"
+              >
+
+              <button
+                class="complete-set-button"
+                type="button"
+                aria-label="Concluir série 3"
+              >
+
+                <svg>
+                  <use href="#icon-check"></use>
+                </svg>
+
+              </button>
+
+            </div>
+
+
+          </div>
+
+
+
+          <button
+            class="add-set-button"
+            id="addSetButton"
+            type="button"
+          >
+
+            <svg>
+              <use href="#icon-plus"></use>
+            </svg>
+
+            ADICIONAR SÉRIE
+
+          </button>
+
+
+        </div>
+
+
+
+        <div
+          class="rest-timer hidden"
+          id="restTimer"
+        >
+
+          <span>
+            DESCANSO
+          </span>
+
+          <strong id="restTimerDisplay">
+            02:00
+          </strong>
+
+
+          <div class="rest-actions">
+
+            <button
+              type="button"
+              data-rest-adjust="-15"
+            >
+              -15s
+            </button>
+
+            <button
+              type="button"
+              id="skipRestButton"
+            >
+              PULAR
+            </button>
+
+            <button
+              type="button"
+              data-rest-adjust="15"
+            >
+              +15s
+            </button>
+
+          </div>
+
+
+        </div>
+
+
+
+        <textarea
+          id="exerciseNotes"
+          class="exercise-notes"
+          placeholder="Observações sobre o exercício..."
+          rows="3"
+        ></textarea>
+
+
+      </section>
+
+
+
+      <div class="session-navigation">
+
+
+        <button
+          class="secondary-button"
+          id="previousExerciseButton"
+          type="button"
+        >
+          ANTERIOR
+        </button>
+
+
+        <button
+          class="primary-button"
+          id="nextExerciseButton"
+          type="button"
+        >
+          PRÓXIMO
+        </button>
+
+
+      </div>
+
+
+
+      <button
+        class="finish-workout-button"
+        id="finishWorkoutButton"
+        type="button"
+      >
+        FINALIZAR TREINO
+      </button>
+
+
+    </main>
+
+
+  </section>
+
+
+
+  <!-- =========================================================
+       MODAL GENÉRICO
+  ========================================================== -->
+
+  <div
+    class="modal-overlay hidden"
+    id="modalOverlay"
+  >
+
+    <div
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+    >
+
+
+      <div class="modal-header">
+
+        <h2 id="modalTitle">
+          IRONCORE
+        </h2>
+
+
+        <button
+          class="modal-close"
+          id="modalCloseButton"
+          type="button"
+          aria-label="Fechar"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+
+      <div
+        class="modal-content"
+        id="modalContent"
+      >
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+
+  <div
+    class="toast hidden"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  >
+  </div>
+
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+  ========================================================== -->
+
+  <script src="app.js" defer></script>
+
+</body>
+</html>
