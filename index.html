@@ -29,7 +29,7 @@
 
   <title>IRONCORE</title>
 
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=11">
 
   <style id="ironcore-premium-hero-v10">
     .premium-hero-v10{
@@ -207,7 +207,7 @@
     }
 
     .premium-anatomy-figure svg{
-      width:min(100%,310px);
+      width:min(100%,350px);
       height:auto;
       overflow:visible;
       filter:drop-shadow(0 22px 28px rgba(0,0,0,.48));
@@ -307,8 +307,8 @@
       .premium-muscle-note small{display:none}
       .premium-muscle-note.left::after,
       .premium-muscle-note.right::before{width:22px}
-      .premium-anatomy-figure{min-height:235px}
-      .premium-anatomy-figure svg{width:min(100%,230px)}
+      .premium-anatomy-figure{min-height:255px}
+      .premium-anatomy-figure svg{width:min(100%,250px)}
       .premium-stats-v10>div{min-height:58px;padding:9px}
       .premium-stats-v10 strong{font-size:13px}
     }
@@ -612,109 +612,186 @@
 
             <div class="premium-anatomy-figure" aria-label="Anatomia de peito e tríceps">
 
-              <svg viewBox="0 0 320 360" role="img" aria-label="Torso anatômico com peito e tríceps destacados">
+              <svg viewBox="0 0 360 430" role="img" aria-label="Anatomia masculina com peitoral e tríceps destacados">
+  <defs>
+    <linearGradient id="v11Skin" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#15181c"/>
+      <stop offset="28%" stop-color="#555b62"/>
+      <stop offset="52%" stop-color="#25292e"/>
+      <stop offset="76%" stop-color="#656b71"/>
+      <stop offset="100%" stop-color="#111316"/>
+    </linearGradient>
 
-                <defs>
-                  <linearGradient id="bodyMetal" x1="0" x2="1">
-                    <stop offset="0%" stop-color="#1b1e22"/>
-                    <stop offset="50%" stop-color="#4a4f55"/>
-                    <stop offset="100%" stop-color="#17191d"/>
-                  </linearGradient>
+    <linearGradient id="v11Dark" x1="0" x2="1">
+      <stop offset="0%" stop-color="#0b0d0f"/>
+      <stop offset="50%" stop-color="#33383e"/>
+      <stop offset="100%" stop-color="#0a0c0e"/>
+    </linearGradient>
 
-                  <linearGradient id="muscleRed" x1="0" x2="1">
-                    <stop offset="0%" stop-color="#b9122a"/>
-                    <stop offset="50%" stop-color="#ff304b"/>
-                    <stop offset="100%" stop-color="#8b0c1d"/>
-                  </linearGradient>
+    <linearGradient id="v11Muscle" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7d0717"/>
+      <stop offset="32%" stop-color="#e11c36"/>
+      <stop offset="60%" stop-color="#ff3a50"/>
+      <stop offset="100%" stop-color="#8d091b"/>
+    </linearGradient>
 
-                  <filter id="redGlow">
-                    <feGaussianBlur stdDeviation="5" result="blur"/>
-                    <feMerge>
-                      <feMergeNode in="blur"/>
-                      <feMergeNode in="SourceGraphic"/>
-                    </feMerge>
-                  </filter>
-                </defs>
+    <radialGradient id="v11ChestLight">
+      <stop offset="0%" stop-color="#ff6574"/>
+      <stop offset="38%" stop-color="#e6243d"/>
+      <stop offset="100%" stop-color="#8e091c"/>
+    </radialGradient>
 
-                <!-- cabeça e pescoço -->
-                <ellipse cx="160" cy="40" rx="33" ry="39" fill="url(#bodyMetal)"/>
-                <path d="M142 74 L178 74 L184 105 L136 105 Z" fill="url(#bodyMetal)"/>
+    <filter id="v11RedGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
 
-                <!-- ombros e tronco -->
-                <path d="M90 105
-                         C108 87 127 82 160 82
-                         C193 82 212 87 230 105
-                         L248 156
-                         C243 213 226 274 205 332
-                         L115 332
-                         C94 274 77 213 72 156 Z"
-                      fill="url(#bodyMetal)"/>
+    <filter id="v11GoldGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="8" result="g"/>
+      <feMerge>
+        <feMergeNode in="g"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
 
-                <!-- braço esquerdo -->
-                <path d="M88 108
-                         C62 114 45 137 40 169
-                         C34 207 39 250 52 292
-                         L77 286
-                         C66 244 67 204 73 170
-                         C76 150 83 130 101 119 Z"
-                      fill="url(#bodyMetal)"/>
+  <!-- halo -->
+  <circle cx="180" cy="206" r="139" fill="none" stroke="#d1a75d" stroke-width="1.3" opacity=".45"/>
+  <circle cx="180" cy="206" r="123" fill="none" stroke="#d1a75d" stroke-width=".7" opacity=".16"/>
 
-                <!-- braço direito -->
-                <path d="M232 108
-                         C258 114 275 137 280 169
-                         C286 207 281 250 268 292
-                         L243 286
-                         C254 244 253 204 247 170
-                         C244 150 237 130 219 119 Z"
-                      fill="url(#bodyMetal)"/>
+  <!-- cabeça -->
+  <path d="M146 25
+           C151 7 169 0 180 0
+           C191 0 209 7 214 25
+           L210 60
+           C206 81 194 93 180 96
+           C166 93 154 81 150 60 Z"
+        fill="url(#v11Skin)"/>
 
-                <!-- peitoral esquerdo -->
-                <path d="M105 111
-                         C118 99 138 97 154 104
-                         L154 165
-                         C137 175 112 172 95 157
-                         C92 138 96 120 105 111 Z"
-                      fill="url(#muscleRed)"
-                      filter="url(#redGlow)"/>
+  <!-- rosto sombreado -->
+  <path d="M153 37 C163 28 197 28 207 37 L202 65 C195 79 188 85 180 87 C172 85 165 79 158 65 Z"
+        fill="#111316" opacity=".72"/>
+  <path d="M166 54 L176 52" stroke="#6b7075" stroke-width="2" opacity=".45"/>
+  <path d="M194 54 L184 52" stroke="#6b7075" stroke-width="2" opacity=".45"/>
+  <path d="M180 53 L176 69 L184 69" stroke="#5b6065" stroke-width="1.5" fill="none" opacity=".4"/>
 
-                <!-- peitoral direito -->
-                <path d="M215 111
-                         C202 99 182 97 166 104
-                         L166 165
-                         C183 175 208 172 225 157
-                         C228 138 224 120 215 111 Z"
-                      fill="url(#muscleRed)"
-                      filter="url(#redGlow)"/>
+  <!-- pescoço -->
+  <path d="M158 83 L202 83 L215 116 L145 116 Z" fill="url(#v11Dark)"/>
+  <path d="M162 88 L177 113" stroke="#777d82" stroke-width="2" opacity=".28"/>
+  <path d="M198 88 L183 113" stroke="#777d82" stroke-width="2" opacity=".28"/>
 
-                <!-- tríceps esquerdo -->
-                <path d="M70 134
-                         C57 145 54 166 56 193
-                         C58 219 61 238 67 254
-                         L82 248
-                         C76 224 75 203 77 180
-                         C79 161 84 147 90 137 Z"
-                      fill="url(#muscleRed)"
-                      opacity=".92"/>
+  <!-- tronco / ombros -->
+  <path d="M145 105
+           C125 102 99 109 77 126
+           C61 139 53 158 51 181
+           C54 229 70 294 95 370
+           C113 402 143 422 180 425
+           C217 422 247 402 265 370
+           C290 294 306 229 309 181
+           C307 158 299 139 283 126
+           C261 109 235 102 215 105
+           C205 116 193 121 180 122
+           C167 121 155 116 145 105 Z"
+        fill="url(#v11Skin)"/>
 
-                <!-- tríceps direito -->
-                <path d="M250 134
-                         C263 145 266 166 264 193
-                         C262 219 259 238 253 254
-                         L238 248
-                         C244 224 245 203 243 180
-                         C241 161 236 147 230 137 Z"
-                      fill="url(#muscleRed)"
-                      opacity=".92"/>
+  <!-- braços -->
+  <path d="M79 127
+           C48 137 32 166 29 203
+           C27 250 38 304 55 354
+           C60 369 72 375 84 369
+           C94 364 98 354 94 340
+           C81 292 78 249 84 210
+           C88 181 98 157 112 140 Z"
+        fill="url(#v11Skin)"/>
 
-                <!-- linha central / abdômen -->
-                <path d="M160 168 L160 320" stroke="#111316" stroke-width="4" opacity=".75"/>
-                <path d="M126 190 C140 198 149 198 160 194" stroke="#202328" stroke-width="3" fill="none"/>
-                <path d="M194 190 C180 198 171 198 160 194" stroke="#202328" stroke-width="3" fill="none"/>
-                <path d="M125 220 C140 228 150 228 160 224" stroke="#202328" stroke-width="3" fill="none"/>
-                <path d="M195 220 C180 228 170 228 160 224" stroke="#202328" stroke-width="3" fill="none"/>
-                <path d="M128 250 C141 257 151 257 160 253" stroke="#202328" stroke-width="3" fill="none"/>
-                <path d="M192 250 C179 257 169 257 160 253" stroke="#202328" stroke-width="3" fill="none"/>
-              </svg>
+  <path d="M281 127
+           C312 137 328 166 331 203
+           C333 250 322 304 305 354
+           C300 369 288 375 276 369
+           C266 364 262 354 266 340
+           C279 292 282 249 276 210
+           C272 181 262 157 248 140 Z"
+        fill="url(#v11Skin)"/>
+
+  <!-- deltoides -->
+  <path d="M83 132 C102 111 126 108 145 116 C134 132 126 151 123 172 C103 170 89 156 83 132 Z"
+        fill="#4b5056" opacity=".78"/>
+  <path d="M277 132 C258 111 234 108 215 116 C226 132 234 151 237 172 C257 170 271 156 277 132 Z"
+        fill="#4b5056" opacity=".78"/>
+
+  <!-- PEITORAL em vermelho -->
+  <path d="M113 127
+           C130 115 153 115 174 126
+           L174 188
+           C155 201 128 199 105 184
+           C99 164 102 143 113 127 Z"
+        fill="url(#v11ChestLight)" filter="url(#v11RedGlow)"/>
+
+  <path d="M247 127
+           C230 115 207 115 186 126
+           L186 188
+           C205 201 232 199 255 184
+           C261 164 258 143 247 127 Z"
+        fill="url(#v11ChestLight)" filter="url(#v11RedGlow)"/>
+
+  <!-- fibras peitorais -->
+  <g stroke="#ff7a86" stroke-width="1.2" opacity=".34" fill="none">
+    <path d="M111 142 C132 134 153 135 173 145"/>
+    <path d="M108 153 C131 146 153 148 173 157"/>
+    <path d="M107 165 C131 159 152 160 173 169"/>
+    <path d="M249 142 C228 134 207 135 187 145"/>
+    <path d="M252 153 C229 146 207 148 187 157"/>
+    <path d="M253 165 C229 159 208 160 187 169"/>
+  </g>
+
+  <!-- TRÍCEPS em vermelho -->
+  <path d="M70 158
+           C54 175 51 203 54 236
+           C57 267 62 290 71 311
+           L89 301
+           C82 273 80 247 83 219
+           C86 193 94 174 105 157
+           C92 150 81 151 70 158 Z"
+        fill="url(#v11Muscle)" opacity=".96"/>
+
+  <path d="M290 158
+           C306 175 309 203 306 236
+           C303 267 298 290 289 311
+           L271 301
+           C278 273 280 247 277 219
+           C274 193 266 174 255 157
+           C268 150 279 151 290 158 Z"
+        fill="url(#v11Muscle)" opacity=".96"/>
+
+  <!-- abdômen -->
+  <path d="M129 198 C146 207 162 208 176 201 L176 380 C155 384 137 373 126 352 C115 318 110 272 115 226 Z"
+        fill="#24282d" opacity=".76"/>
+  <path d="M231 198 C214 207 198 208 184 201 L184 380 C205 384 223 373 234 352 C245 318 250 272 245 226 Z"
+        fill="#24282d" opacity=".76"/>
+
+  <g fill="#41464c" opacity=".72">
+    <path d="M132 212 C145 205 160 206 174 213 L172 242 C157 249 143 247 131 239 Z"/>
+    <path d="M228 212 C215 205 200 206 186 213 L188 242 C203 249 217 247 229 239 Z"/>
+    <path d="M130 250 C144 244 159 245 173 251 L171 280 C156 287 142 285 130 277 Z"/>
+    <path d="M230 250 C216 244 201 245 187 251 L189 280 C204 287 218 285 230 277 Z"/>
+    <path d="M132 289 C146 283 159 284 172 290 L170 319 C155 326 143 323 133 316 Z"/>
+    <path d="M228 289 C214 283 201 284 188 290 L190 319 C205 326 217 323 227 316 Z"/>
+  </g>
+
+  <!-- linha central -->
+  <path d="M180 194 L180 384" stroke="#090b0d" stroke-width="4" opacity=".88"/>
+
+  <!-- oblíquos -->
+  <path d="M112 220 C100 261 105 318 130 365" stroke="#5e646a" stroke-width="3" fill="none" opacity=".24"/>
+  <path d="M248 220 C260 261 255 318 230 365" stroke="#5e646a" stroke-width="3" fill="none" opacity=".24"/>
+
+  <!-- pontos HUD -->
+  <circle cx="132" cy="151" r="5" fill="#f2d08c" filter="url(#v11GoldGlow)"/>
+  <circle cx="285" cy="219" r="5" fill="#f2d08c" filter="url(#v11GoldGlow)"/>
+</svg>
 
             </div>
 
