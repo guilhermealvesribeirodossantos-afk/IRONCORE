@@ -5,11 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("IRONCORE carregado");
 
   /* =========================================================
-     NAVEGAÇÃO
+     NAVEGAÇÃO PRINCIPAL
   ========================================================= */
 
-  const screens = document.querySelectorAll(".screen");
-  const navItems = document.querySelectorAll(".nav-item");
+  const screens =
+    document.querySelectorAll(".screen");
+
+  const navItems =
+    document.querySelectorAll(".nav-item");
 
   function abrirTela(tela) {
 
@@ -17,9 +20,10 @@ document.addEventListener("DOMContentLoaded", function () {
       screen.classList.remove("active");
     });
 
-    const destino = document.querySelector(
-      '[data-screen="' + tela + '"]'
-    );
+    const destino =
+      document.querySelector(
+        '[data-screen="' + tela + '"]'
+      );
 
     if (destino) {
       destino.classList.add("active");
@@ -35,52 +39,211 @@ document.addEventListener("DOMContentLoaded", function () {
 
     });
 
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: "auto"
+    });
+
   }
 
   navItems.forEach(function (item) {
 
-    item.addEventListener("click", function () {
-      abrirTela(item.dataset.target);
-    });
+    item.addEventListener(
+      "click",
+      function () {
+
+        const tela =
+          item.dataset.target;
+
+        if (tela) {
+          abrirTela(tela);
+        }
+
+      }
+    );
 
   });
+
+
+  /* =========================================================
+     ELEMENTOS DA SESSÃO DE TREINO
+  ========================================================= */
+
+  const iniciarTreino =
+    document.getElementById(
+      "startWorkoutButton"
+    );
+
+  const telaTreino =
+    document.getElementById(
+      "workoutSession"
+    );
+
+  const fecharTreino =
+    document.getElementById(
+      "closeWorkoutSession"
+    );
+
+  const sessionDuration =
+    document.getElementById(
+      "sessionDuration"
+    );
+
+
+  /* =========================================================
+     CRONÔMETRO DO TREINO
+  ========================================================= */
+
+  let treinoInicio = null;
+  let treinoInterval = null;
+
+  function formatarTempoTotal(
+    totalSegundos
+  ) {
+
+    const horas =
+      Math.floor(
+        totalSegundos / 3600
+      );
+
+    const minutos =
+      Math.floor(
+        (totalSegundos % 3600) / 60
+      );
+
+    const segundos =
+      totalSegundos % 60;
+
+    if (horas > 0) {
+
+      return (
+        String(horas).padStart(2, "0") +
+        ":" +
+        String(minutos).padStart(2, "0") +
+        ":" +
+        String(segundos).padStart(2, "0")
+      );
+
+    }
+
+    return (
+      String(minutos).padStart(2, "0") +
+      ":" +
+      String(segundos).padStart(2, "0")
+    );
+
+  }
+
+  function atualizarCronometroTreino() {
+
+    if (
+      !treinoInicio ||
+      !sessionDuration
+    ) {
+      return;
+    }
+
+    const agora =
+      Date.now();
+
+    const segundos =
+      Math.floor(
+        (agora - treinoInicio) / 1000
+      );
+
+    sessionDuration.textContent =
+      formatarTempoTotal(segundos);
+
+  }
+
+  function iniciarCronometroTreino() {
+
+    if (!sessionDuration) {
+      return;
+    }
+
+    if (!treinoInicio) {
+      treinoInicio = Date.now();
+    }
+
+    atualizarCronometroTreino();
+
+    if (treinoInterval) {
+      clearInterval(
+        treinoInterval
+      );
+    }
+
+    treinoInterval =
+      setInterval(
+        atualizarCronometroTreino,
+        1000
+      );
+
+  }
+
+  function pausarCronometroTreino() {
+
+    if (treinoInterval) {
+
+      clearInterval(
+        treinoInterval
+      );
+
+      treinoInterval = null;
+
+    }
+
+  }
 
 
   /* =========================================================
      ABRIR / FECHAR TREINO
   ========================================================= */
 
-  const iniciarTreino =
-    document.getElementById("startWorkoutButton");
+  if (
+    iniciarTreino &&
+    telaTreino
+  ) {
 
-  const telaTreino =
-    document.getElementById("workoutSession");
+    iniciarTreino.addEventListener(
+      "click",
+      function () {
 
-  const fecharTreino =
-    document.getElementById("closeWorkoutSession");
+        telaTreino.classList.remove(
+          "hidden"
+        );
 
-  if (iniciarTreino && telaTreino) {
+        document.body.style.overflow =
+          "hidden";
 
-    iniciarTreino.addEventListener("click", function () {
+        iniciarCronometroTreino();
 
-      telaTreino.classList.remove("hidden");
-
-      document.body.style.overflow = "hidden";
-
-    });
+      }
+    );
 
   }
 
-  if (fecharTreino && telaTreino) {
+  if (
+    fecharTreino &&
+    telaTreino
+  ) {
 
-    fecharTreino.addEventListener("click", function () {
+    fecharTreino.addEventListener(
+      "click",
+      function () {
 
-      telaTreino.classList.add("hidden");
+        telaTreino.classList.add(
+          "hidden"
+        );
 
-      document.body.style.overflow = "";
+        document.body.style.overflow =
+          "";
 
-    });
+        pausarCronometroTreino();
+
+      }
+    );
 
   }
 
@@ -90,17 +253,21 @@ document.addEventListener("DOMContentLoaded", function () {
   ========================================================= */
 
   const setsContainer =
-    document.getElementById("setsContainer");
+    document.getElementById(
+      "setsContainer"
+    );
 
   const addSetButton =
-    document.getElementById("addSetButton");
+    document.getElementById(
+      "addSetButton"
+    );
 
   const STORAGE_KEY =
     "ironcore_series_v2";
 
 
   /* =========================================================
-     CARREGAR DADOS
+     CARREGAR SÉRIES SALVAS
   ========================================================= */
 
   function carregarSeries() {
@@ -108,7 +275,9 @@ document.addEventListener("DOMContentLoaded", function () {
     try {
 
       const dados =
-        localStorage.getItem(STORAGE_KEY);
+        localStorage.getItem(
+          STORAGE_KEY
+        );
 
       if (!dados) {
         return [];
@@ -117,7 +286,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const convertido =
         JSON.parse(dados);
 
-      if (!Array.isArray(convertido)) {
+      if (
+        !Array.isArray(
+          convertido
+        )
+      ) {
         return [];
       }
 
@@ -138,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =========================================================
-     SALVAR TODAS AS SÉRIES
+     SALVAR SÉRIES
   ========================================================= */
 
   function salvarTodasSeries() {
@@ -148,14 +321,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const linhas =
-      setsContainer.querySelectorAll(".set-row");
+      setsContainer.querySelectorAll(
+        ".set-row"
+      );
 
     const dados = [];
 
     linhas.forEach(function (linha) {
 
       const inputs =
-        linha.querySelectorAll("input");
+        linha.querySelectorAll(
+          "input"
+        );
 
       if (inputs.length < 2) {
         return;
@@ -170,7 +347,9 @@ document.addEventListener("DOMContentLoaded", function () {
           inputs[1].value,
 
         concluida:
-          linha.classList.contains("completed")
+          linha.classList.contains(
+            "completed"
+          )
 
       });
 
@@ -181,19 +360,26 @@ document.addEventListener("DOMContentLoaded", function () {
       JSON.stringify(dados)
     );
 
+    atualizarContadorSeries();
+
   }
 
 
   /* =========================================================
-     CRIAR LINHA DE SÉRIE
+     CRIAR NOVA LINHA DE SÉRIE
   ========================================================= */
 
-  function criarLinhaSerie(numero) {
+  function criarLinhaSerie(
+    numero
+  ) {
 
     const linha =
-      document.createElement("div");
+      document.createElement(
+        "div"
+      );
 
-    linha.className = "set-row";
+    linha.className =
+      "set-row";
 
     linha.innerHTML = `
       <strong>${numero}</strong>
@@ -247,23 +433,22 @@ document.addEventListener("DOMContentLoaded", function () {
     const seriesSalvas =
       carregarSeries();
 
-    /*
-      O HTML começa com 3 séries.
-
-      Se o usuário salvou 4, 5, 6...
-      recriamos automaticamente as extras.
-    */
-
     while (
-      setsContainer.querySelectorAll(".set-row").length <
+      setsContainer.querySelectorAll(
+        ".set-row"
+      ).length <
       seriesSalvas.length
     ) {
 
       const numero =
-        setsContainer.querySelectorAll(".set-row").length + 1;
+        setsContainer.querySelectorAll(
+          ".set-row"
+        ).length + 1;
 
       const novaLinha =
-        criarLinhaSerie(numero);
+        criarLinhaSerie(
+          numero
+        );
 
       setsContainer.appendChild(
         novaLinha
@@ -271,54 +456,111 @@ document.addEventListener("DOMContentLoaded", function () {
 
     }
 
-
     const linhas =
-      setsContainer.querySelectorAll(".set-row");
+      setsContainer.querySelectorAll(
+        ".set-row"
+      );
 
-    linhas.forEach(function (linha, indice) {
+    linhas.forEach(
+      function (
+        linha,
+        indice
+      ) {
 
-      const salvo =
-        seriesSalvas[indice];
+        const salvo =
+          seriesSalvas[indice];
 
-      if (!salvo) {
-        return;
-      }
+        if (!salvo) {
+          return;
+        }
 
-      const inputs =
-        linha.querySelectorAll("input");
+        const inputs =
+          linha.querySelectorAll(
+            "input"
+          );
 
-      const botao =
-        linha.querySelector(
-          ".complete-set-button"
-        );
+        const botao =
+          linha.querySelector(
+            ".complete-set-button"
+          );
 
-      if (inputs.length >= 2) {
+        if (
+          inputs.length >= 2
+        ) {
 
-        inputs[0].value =
-          salvo.kg ?? "";
+          inputs[0].value =
+            salvo.kg ?? "";
 
-        inputs[1].value =
-          salvo.reps ?? "";
+          inputs[1].value =
+            salvo.reps ?? "";
 
-      }
+        }
 
-      if (salvo.concluida) {
+        if (
+          salvo.concluida
+        ) {
 
-        linha.classList.add(
-          "completed"
-        );
-
-        if (botao) {
-
-          botao.classList.add(
+          linha.classList.add(
             "completed"
           );
+
+          if (botao) {
+
+            botao.classList.add(
+              "completed"
+            );
+
+          }
+
+        } else {
+
+          linha.classList.remove(
+            "completed"
+          );
+
+          if (botao) {
+
+            botao.classList.remove(
+              "completed"
+            );
+
+          }
 
         }
 
       }
+    );
 
-    });
+    atualizarContadorSeries();
+
+  }
+
+
+  /* =========================================================
+     CONTADOR DE SÉRIES CONCLUÍDAS
+  ========================================================= */
+
+  const seriesCounterStrong =
+    document.querySelector(
+      ".series-counter strong"
+    );
+
+  function atualizarContadorSeries() {
+
+    if (
+      !setsContainer ||
+      !seriesCounterStrong
+    ) {
+      return;
+    }
+
+    const concluidas =
+      setsContainer.querySelectorAll(
+        ".set-row.completed"
+      ).length;
+
+    seriesCounterStrong.textContent =
+      concluidas;
 
   }
 
@@ -352,6 +594,220 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   /* =========================================================
+     CRONÔMETRO DE DESCANSO
+  ========================================================= */
+
+  const restTimerValue =
+    document.getElementById(
+      "restTimerValue"
+    );
+
+  const restMinusButton =
+    document.getElementById(
+      "restMinusButton"
+    );
+
+  const restPlusButton =
+    document.getElementById(
+      "restPlusButton"
+    );
+
+  const restSkipButton =
+    document.getElementById(
+      "restSkipButton"
+    );
+
+  const DESCANSO_PADRAO =
+    120;
+
+  let descansoRestante =
+    DESCANSO_PADRAO;
+
+  let descansoInterval =
+    null;
+
+  let descansoAtivo =
+    false;
+
+
+  function formatarDescanso(
+    segundos
+  ) {
+
+    const minutos =
+      Math.floor(
+        segundos / 60
+      );
+
+    const resto =
+      segundos % 60;
+
+    return (
+      String(minutos).padStart(2, "0") +
+      ":" +
+      String(resto).padStart(2, "0")
+    );
+
+  }
+
+  function atualizarDisplayDescanso() {
+
+    if (!restTimerValue) {
+      return;
+    }
+
+    restTimerValue.textContent =
+      formatarDescanso(
+        Math.max(
+          0,
+          descansoRestante
+        )
+      );
+
+  }
+
+  function pararDescanso() {
+
+    if (descansoInterval) {
+
+      clearInterval(
+        descansoInterval
+      );
+
+      descansoInterval = null;
+
+    }
+
+    descansoAtivo = false;
+
+  }
+
+  function finalizarDescanso() {
+
+    pararDescanso();
+
+    descansoRestante = 0;
+
+    atualizarDisplayDescanso();
+
+    if (
+      navigator.vibrate
+    ) {
+
+      navigator.vibrate(
+        [150, 80, 150]
+      );
+
+    }
+
+  }
+
+  function iniciarDescanso() {
+
+    pararDescanso();
+
+    descansoRestante =
+      DESCANSO_PADRAO;
+
+    descansoAtivo = true;
+
+    atualizarDisplayDescanso();
+
+    descansoInterval =
+      setInterval(
+        function () {
+
+          descansoRestante -= 1;
+
+          if (
+            descansoRestante <= 0
+          ) {
+
+            finalizarDescanso();
+            return;
+
+          }
+
+          atualizarDisplayDescanso();
+
+        },
+        1000
+      );
+
+  }
+
+  function alterarDescanso(
+    segundos
+  ) {
+
+    descansoRestante +=
+      segundos;
+
+    if (
+      descansoRestante < 0
+    ) {
+
+      descansoRestante = 0;
+
+    }
+
+    atualizarDisplayDescanso();
+
+    if (
+      descansoRestante === 0
+    ) {
+
+      pararDescanso();
+
+    }
+
+  }
+
+  if (restMinusButton) {
+
+    restMinusButton.addEventListener(
+      "click",
+      function () {
+
+        alterarDescanso(
+          -15
+        );
+
+      }
+    );
+
+  }
+
+  if (restPlusButton) {
+
+    restPlusButton.addEventListener(
+      "click",
+      function () {
+
+        alterarDescanso(
+          15
+        );
+
+      }
+    );
+
+  }
+
+  if (restSkipButton) {
+
+    restSkipButton.addEventListener(
+      "click",
+      function () {
+
+        finalizarDescanso();
+
+      }
+    );
+
+  }
+
+
+  /* =========================================================
      CONCLUIR SÉRIE
   ========================================================= */
 
@@ -371,24 +827,34 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         const linha =
-          botao.closest(".set-row");
+          botao.closest(
+            ".set-row"
+          );
 
         if (!linha) {
           return;
         }
 
         const inputs =
-          linha.querySelectorAll("input");
+          linha.querySelectorAll(
+            "input"
+          );
 
-        if (inputs.length < 2) {
+        if (
+          inputs.length < 2
+        ) {
           return;
         }
 
         const kg =
-          Number(inputs[0].value);
+          Number(
+            inputs[0].value
+          );
 
         const reps =
-          Number(inputs[1].value);
+          Number(
+            inputs[1].value
+          );
 
         if (
           kg <= 0 ||
@@ -403,22 +869,26 @@ document.addEventListener("DOMContentLoaded", function () {
 
         }
 
-        const concluida =
+        const vaiConcluir =
           !linha.classList.contains(
             "completed"
           );
 
         linha.classList.toggle(
           "completed",
-          concluida
+          vaiConcluir
         );
 
         botao.classList.toggle(
           "completed",
-          concluida
+          vaiConcluir
         );
 
         salvarTodasSeries();
+
+        if (vaiConcluir) {
+          iniciarDescanso();
+        }
 
       }
     );
@@ -450,7 +920,9 @@ document.addEventListener("DOMContentLoaded", function () {
           quantidade + 1;
 
         const novaLinha =
-          criarLinhaSerie(numero);
+          criarLinhaSerie(
+            numero
+          );
 
         setsContainer.appendChild(
           novaLinha
@@ -464,7 +936,9 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         console.log(
-          "Série " + numero + " adicionada"
+          "Série " +
+          numero +
+          " adicionada"
         );
 
       }
@@ -478,5 +952,12 @@ document.addEventListener("DOMContentLoaded", function () {
   ========================================================= */
 
   restaurarSeries();
+
+  atualizarDisplayDescanso();
+
+  if (sessionDuration) {
+    sessionDuration.textContent =
+      "00:00";
+  }
 
 });
